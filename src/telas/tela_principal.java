@@ -27,108 +27,88 @@ public class tela_principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        func = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        clientes = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        func = new javax.swing.JButton();
+        clientes = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Yu Gothic Light", 1, 63)); // NOI18N
+        jLabel1.setText("Manutenção");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(50, 60, 390, 102);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Sem Título-2.png"))); // NOI18N
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(510, 240, 250, 300);
 
         func.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        func.setText("Funcionários");
+        func.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Downloads\\icons8-Funcionário homem-80.png")); // NOI18N
+        func.setToolTipText("Funcionários");
         func.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 funcActionPerformed(evt);
             }
         });
-
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton2.setText("Produtos");
+        getContentPane().add(func);
+        func.setBounds(140, 190, 140, 120);
 
         clientes.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        clientes.setText("Clientes");
+        clientes.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Downloads\\icons8-Empresa Cliente-128.png")); // NOI18N
+        clientes.setToolTipText("Clientes");
         clientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clientesActionPerformed(evt);
             }
         });
+        getContentPane().add(clientes);
+        clientes.setBounds(140, 350, 140, 130);
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic Light", 0, 56)); // NOI18N
-        jLabel1.setText("Cadastros");
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Downloads\\icons8-Mover por carrinho-100.png")); // NOI18N
+        jButton2.setToolTipText("Produtos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(140, 510, 133, 130);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Sem Título-2.png"))); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Vladimir Script", 3, 75)); // NOI18N
+        jLabel4.setText("Bem - Vindo");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(450, 160, 400, 92);
 
-        jLabel3.setFont(new java.awt.Font("Vladimir Script", 1, 60)); // NOI18N
-        jLabel3.setText("Bem - Vindo");
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Desktop\\Sem Título-1.png")); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 1280, 720);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(func, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(259, 259, 259)
-                                .addComponent(jLabel3))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(280, 280, 280)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(455, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
-                        .addComponent(func, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(jLabel3)
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(138, 138, 138))
-        );
-
-        pack();
+        setSize(new java.awt.Dimension(1298, 767));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void funcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcActionPerformed
         // TODO add your handling code here:
-        cadastrofuncionarios frm = new cadastrofuncionarios();
-            frm.setVisible(true);
-            setLocationRelativeTo(null);
+        cadastrofuncionarios funcionario = new cadastrofuncionarios();
+        funcionario.setVisible(true);
     }//GEN-LAST:event_funcActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        cadastropodruto produto = new cadastropodruto();
+        produto.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesActionPerformed
         // TODO add your handling code here:
-         
-
-
-            cadastrocliente frm = new cadastrocliente();
-            frm.setVisible(true);
-            setLocationRelativeTo(null);
-            
-
-    
+        cadastrocliente cliente = new cadastrocliente();
+        cliente.setVisible(true);
     }//GEN-LAST:event_clientesActionPerformed
 
     /**
@@ -173,5 +153,6 @@ public class tela_principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
