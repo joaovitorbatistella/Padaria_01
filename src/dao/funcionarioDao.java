@@ -14,6 +14,7 @@ import java.sql.Time;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import modelo.modeloFuncionario;
 
 /**
  *
@@ -21,6 +22,10 @@ import javax.swing.JOptionPane;
  */
 public class funcionarioDao {
 
+    Conexao conex = new Conexao();
+    modeloFuncionario mod = new modeloFuncionario();
+    
+    
     public boolean inserir(int telefone,String endereco,String nome, int cpf, int codigo) {
         String sql = "INSERT INTO funcionario(telefone, endereco, nome, cpf) VALUES (?, ?, ?, ?, ?)";//define instrução SQL
         PreparedStatement ps;
@@ -49,5 +54,10 @@ public class funcionarioDao {
         } else {
             JOptionPane.showMessageDialog(null, "Problemas com a inserção!");
         }
+    }
+    
+    public modelo.modeloFuncionario buscaFuncionario(modelo.modeloFuncionario func){
+        conex.getConexao();
+        conex.executeSQL("select *from funcioanrio where nome like%"+mod.getPesquisa()+"%'");
     }
 }

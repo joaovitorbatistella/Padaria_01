@@ -6,17 +6,22 @@
 package persistencia;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author edimar
  */
 public class Conexao {
-
-    private static Connection conn;
+    
+    public Statement stm;
+    public ResultSet rs;
+    static Connection conn;
     private final static String DRIVER = "org.postgresql.Driver"; //sempre assim para o PostgreSQL
     private final static String IP = "localhost/"; //ip do computador que contém o banco
     public final static String DATABASE = "Padaria_03"; //nome base de dados no PostgreSQL
@@ -48,6 +53,14 @@ public class Conexao {
             System.out.println(e.getMessage());
         }
     }
+    public void executeSQL(String sql){
+            try {
+                stm = conn.createStatement(rs.TYPE_SCROLL_INSENSITIVE, rs.CONCUR_READ_ONLY);
+                rs = stm.executeQuery(sql);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro ExecutaSQL:\n"+ex.getMessage());          
+            }
+        }
 
     public static void main(String[] args) {
         try {
