@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package modeloBeans;
 
 /**
  *
  * @author joaov
  */
-public class modeloCliente {
+public class modeloFuncionario {
 
     /**
      * @return the nome
      */
-    public String getNome() {        
+    public String getNome() {
         return nome;
     }
 
@@ -66,23 +66,10 @@ public class modeloCliente {
     public void setTelefone(int telefone) {
         this.telefone = telefone;
     }
-
-    /**
-     * @return the inadinplencia
-     */
-    public String getInadinplencia() {
-        return inadinplencia;
-    }
-
-    /**
-     * @param inadinplencia the inadinplencia to set
-     */
-    public void setInadinplencia(String inadinplencia) {
-        this.inadinplencia = inadinplencia;
-    }
+    
     private String nome;
     private int cpf;
     private String endereco;
     private int telefone;
-    private String inadinplencia;        
+    
 }

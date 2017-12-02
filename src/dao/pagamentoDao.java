@@ -6,47 +6,56 @@
 package dao;
 
 import java.sql.Date;
-import persistencia.Conexao;
+import persistencia.ConexaoSQL;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import modeloBeans.modeloPagamento;
 
 /**
  *
  * @author Administrador
  */
 public class pagamentoDao {
+    
+    ConexaoSQL connex = new ConexaoSQL();
+    modeloPagamento modPagamento = new modeloPagamento();
 
-    public boolean inserir(String titulo, String duracao, String dataEstreia, String genero) {
-        String sql = "INSERT INTO filme(titulo, duracao, data_estreia, genero) VALUES (?, ?, ?, ?)";//define instrução SQL
-        PreparedStatement ps;
+    public void Salvar(modeloPagamento modPagamento) {
+        
+        connex.conexao();
+        
         try {
-            ps = Conexao.getConexao().prepareStatement(sql);//prepara instrução SQL
-            ps.setString(1, titulo);// primeiro parâmetro indica a ? correspondente, segundo parâmetro a variável que substituirá a ?
-            ps.setTime(2, Time.valueOf(duracao)); //exemplo de hora
-            ps.setDate(3, Date.valueOf(dataEstreia)); //exemplo de data
-            ps.setString(4, genero); //Exemplo de String
-            ps.execute(); //executa SQL preparada
-            return true;
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(pagamentoDao.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
+            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO produto(valor, data_pagamento, data_vencimento) VALUES (?, ?, ?)");
+            pst.setDouble(1, Double.parseDouble((modPagamento.getValor())));
+            pst.setDate(2, Date.valueOf(modPagamento.getData_pagamento()));
+            pst.setDate(3, Date.valueOf(modPagamento.getData_vencimento()));
+            pst.setInt(4, modPagamento.getCod_venda());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Erro ao inserir dados!/n ERROR: " +ex);
         }
+        connex.desconecta();
     }
 
-    public static void main(String[] args) {
-        //crie um objeto da classe 
-        pagamentoDao dao = new pagamentoDao();
-        //chame o método inserir desse objeto
-        boolean result = dao.inserir("Poeria em alto mar", "02:33:00", "1953-02-15", "drama");
-        if (result) {
-            JOptionPane.showMessageDialog(null, "Inserção realizada com sucesso!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Problemas com a inserção!");
+    
+    public modeloPagamento buscaPagamento (modeloPagamento moPagamento) throws ClassNotFoundException, SQLException {
+    
+        connex.conexao();
+        
+        connex.executaSql("SELECT * FROM produto WHERE descricao LIKE '%'"+modPagamento.getPesquisa());
+        try{
+            connex.rs.first();
+            modPagamento.setValor(connex.rs.getString("valor"));
+            modPagamento.setData_pagamento(connex.rs.getString("data_pagamento"));
+            modPagamento.setData_vencimento(connex.rs.getString("data_vencimento"));
+            modPagamento.setCod_venda(connex.rs.getInt("cod_venda"));
         }
+        catch(SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Produto não cadastrado");
+        }
+        connex.desconecta();
+        return moPagamento;
     }
 }

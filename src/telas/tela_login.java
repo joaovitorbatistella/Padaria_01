@@ -126,7 +126,7 @@ public class tela_login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(txtLogin.getText().equals("usuario")&& txtSenha.getText().equals("1234")){
+        if(txtLogin.getText().equals("")&& txtSenha.getText().equals("")){
             tela_principal tela = new tela_principal();
             tela.setVisible(true);
             dispose();

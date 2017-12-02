@@ -5,11 +5,20 @@
  */
 package telas;
 
+import dao.produtoDao;
+import modeloBeans.modeloProduto;
+import persistencia.ConexaoSQL;
+
+
 /**
  *
  * @author joaov
  */
 public class cadastropodruto extends javax.swing.JFrame {
+    modeloProduto modProduto = new modeloProduto();
+    produtoDao daoProduto = new produtoDao();
+    ConexaoSQL connex = new ConexaoSQL();
+   
 
     /**
      * Creates new form cadastropodruto
@@ -82,7 +91,12 @@ public class cadastropodruto extends javax.swing.JFrame {
         });
 
         kButton1.setBackground(new java.awt.Color(51, 255, 0));
-        kButton1.setText("Busacar");
+        kButton1.setText("Busca");
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton2.setText("INSERIR");
@@ -191,11 +205,19 @@ public class cadastropodruto extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        modProduto.setDescricao(jTextField1.getText());
+        modProduto.setCusto_producao(Double.parseDouble(jTextField2.getText()));
+        daoProduto.Salvar(modProduto);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_kButton1ActionPerformed
 
     /**
      * @param args the command line arguments

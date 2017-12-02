@@ -5,46 +5,53 @@
  */
 package dao;
 
-import java.sql.Date;
-import persistencia.Conexao;
+import persistencia.ConexaoSQL;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import modeloBeans.modeloProduto;
 
 /**
  *
  * @author Administrador
  */
 public class produtoDao {
+    
+    ConexaoSQL connex = new ConexaoSQL();
+    modeloProduto modProduto = new modeloProduto();
 
-    public boolean inserir(int custo_produto, String descricao) {
-        String sql = "INSERT INTO produto(custo_produto, descricao) VALUES (?, ?)";//define instrução SQL
-        PreparedStatement ps;
+    public void Salvar(modeloProduto moProduto) {
+        
+        connex.conexao();
+        
         try {
-            ps = Conexao.getConexao().prepareStatement(sql);//prepara instrução SQL
-            ps.setInt(1, custo_produto);
-            ps.setString(2, descricao);
-            ps.execute();
-            return true;
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(produtoDao.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
+            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO produto(descricao, custo_producao) VALUES (?, ?)");
+            pst.setString(1, modProduto.getDescricao());
+            pst.setDouble(2, modProduto.getCusto_producao());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Erro ao inserir dados!/n ERROR: " +ex);
         }
+        connex.desconecta();
     }
 
-    public static void main(String[] args) {
-        //crie um objeto da classe 
-        produtoDao dao = new produtoDao();
-        //chame o método inserir desse objeto
-        boolean result = dao.inserir(210, "ovo");
-        if (result) {
-            JOptionPane.showMessageDialog(null, "Inserção realizada com sucesso!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Problemas com a inserção!");
+    
+    public modeloProduto buscaProduto (modeloProduto modProduto) throws ClassNotFoundException, SQLException {
+    
+        connex.conexao();
+        
+        connex.executaSql("SELECT * FROM produto WHERE descricao LIKE '%'"+modProduto.getPesquisa());
+        try{
+            connex.rs.first();
+            modProduto.setDescricao(connex.rs.getString("descricao"));
+            modProduto.setCusto_producao(connex.rs.getDouble("custo_producao"));
         }
+        catch(SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Produto não cadastrado");
+        }
+        connex.desconecta();
+        return modProduto;
     }
 }
+

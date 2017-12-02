@@ -5,59 +5,38 @@
  */
 package dao;
 
-import java.sql.Date;
-import persistencia.Conexao;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import modelo.modeloFuncionario;
+import persistencia.ConexaoSQL;
+import modeloBeans.modeloFuncionario;
 
 /**
  *
  * @author Administrador
  */
 public class funcionarioDao {
+    
+    ConexaoSQL connex = new ConexaoSQL();
+    modeloFuncionario modFun = new modeloFuncionario();
+    
 
-    Conexao conex = new Conexao();
-    modeloFuncionario mod = new modeloFuncionario();
-    
-    
-    public boolean inserir(int telefone,String endereco,String nome, int cpf, int codigo) {
-        String sql = "INSERT INTO funcionario(telefone, endereco, nome, cpf) VALUES (?, ?, ?, ?, ?)";//define instrução SQL
-        PreparedStatement ps;
+    public void Salvar (modeloFuncionario modFun) {
+        
+        
+        connex.conexao();
+        
         try {
-            ps = Conexao.getConexao().prepareStatement(sql);//prepara instrução SQL
-            ps.setInt(1, telefone);// primeiro parâmetro indica a ? correspondente, segundo parâmetro a variável que substituirá a ?
-            ps.setString(2, endereco); //exemplo de hora
-            ps.setString(3, nome); //exemplo de data
-            ps.setInt(4, cpf); //Exemplo de String
-            ps.setInt(5, codigo);
-            ps.execute(); //executa SQL preparada
-            return true;
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(funcionarioDao.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
+        PreparedStatement pst = connex.con.prepareStatement("INSERT INTO funcionario(telefone, endereco, nome, cpf) VALUES (?, ?, ?, ?)");
+            pst.setInt(1, modFun.getTelefone());// primeiro parâmetro indica a ? correspondente, segundo parâmetro a variável que substituirá a ?
+            pst.setString(2, modFun.getEndereco()); //exemplo de hora
+            pst.setString(3, modFun.getNome()); //exemplo de data
+            pst.setInt(4, modFun.getCpf()); //Exemplo de String
+            pst.execute(); //executa SQL preparada
+            JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao inserir!/n Error:" + ex);
+       
         }
-    }
-
-    public static void main(String[] args) {
-        //crie um objeto da classe 
-        funcionarioDao dao = new funcionarioDao();
-        //chame o método inserir desse objeto
-        boolean result = dao.inserir(91798405, "Rua Almirante Barroso", "João Vitor Batistella", 0222716, 31);
-        if (result) {
-            JOptionPane.showMessageDialog(null, "Inserção realizada com sucesso!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Problemas com a inserção!");
-        }
-    }
-    
-    public modelo.modeloFuncionario buscaFuncionario(modelo.modeloFuncionario func){
-        conex.getConexao();
-        conex.executeSQL("select *from funcioanrio where nome like%"+mod.getPesquisa()+"%'");
     }
 }

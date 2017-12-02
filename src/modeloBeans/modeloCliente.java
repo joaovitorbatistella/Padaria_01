@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package modeloBeans;
 
 /**
  *
  * @author joaov
  */
-public class modeloFuncionario {
+public class modeloCliente {
 
     /**
      * @return the nome
@@ -28,14 +28,14 @@ public class modeloFuncionario {
     /**
      * @return the cpf
      */
-    public int getCpf() {
+    public long getCpf() {
         return cpf;
     }
 
     /**
      * @param cpf the cpf to set
      */
-    public void setCpf(int cpf) {
+    public void setCpf(long cpf) {
         this.cpf = cpf;
     }
 
@@ -56,20 +56,33 @@ public class modeloFuncionario {
     /**
      * @return the telefone
      */
-    public int getTelefone() {
+    public long getTelefone() {
         return telefone;
     }
 
     /**
      * @param telefone the telefone to set
      */
-    public void setTelefone(int telefone) {
+    public void setTelefone(long telefone) {
         this.telefone = telefone;
     }
-    
+
+    /**
+     * @return the inadinplencia
+     */
+    public String getInadinplencia() {
+        return inadinplencia;
+    }
+
+    /**
+     * @param inadinplencia the inadinplencia to set
+     */
+    public void setInadinplencia(String inadinplencia) {
+        this.inadinplencia = inadinplencia;
+    }
     private String nome;
-    private int cpf;
+    private long cpf;
     private String endereco;
-    private int telefone;
-    
+    private long telefone;
+    private String inadinplencia;
 }

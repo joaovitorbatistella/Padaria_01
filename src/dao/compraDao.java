@@ -6,46 +6,53 @@
 package dao;
 
 import java.sql.Date;
-import persistencia.Conexao;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import modeloBeans.modeloCompra;
+import persistencia.ConexaoSQL;
 
 /**
  *
  * @author Administrador
  */
 public class compraDao {
+    
+    ConexaoSQL connex = new ConexaoSQL();
+    modeloCompra modCompra = new modeloCompra();
 
-    public boolean inserir(int numero, String data, Double valor_total) {
-        String sql = "INSERT INTO venda(numero, data, valor_total) VALUES (?, ?, ?)";//define instrução SQL
-        PreparedStatement ps;
+    public void Salvar(modeloCompra modCompra) {
+        
+        connex.conexao();
+        
         try {
-            ps = Conexao.getConexao().prepareStatement(sql);//prepara instrução SQL
-            ps.setInt(1, numero);
-            ps.setDate(2, Date.valueOf(data));// primeiro parâmetro indica a ? correspondente, segundo parâmetro a variável que substituirá a ?
-            ps.setDouble(3, valor_total); //exemplo de hora
-            ps.execute(); //executa SQL preparada
-            return true;
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(compraDao.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
+            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO compra(data, valor_total, cod_cliente) VALUES (?, ?, ?)");
+            pst.setDate(1, Date.valueOf(modCompra.getData()));
+            pst.setDouble(2, Double.parseDouble(modCompra.getValor_total()));
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Erro ao inserir dados!/n ERROR: " +ex);
         }
+        connex.desconecta();
     }
 
-    public static void main(String[] args) {
-        //crie um objeto da classe 
-        compraDao dao = new compraDao();
-        //chame o método inserir desse objeto
-        boolean result = dao.inserir(50, "2017-11-17", 51.10);
-        if (result) {
-            JOptionPane.showMessageDialog(null, "Inserção realizada com sucesso!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Problemas com a inserção!");
+    
+    public modeloCompra buscaCompra (modeloCompra mdCompra) throws ClassNotFoundException, SQLException {
+    
+        connex.conexao();
+        
+        connex.executaSql("SELECT * FROM compra WHERE numero LIKE '%'"+modCompra.getPesquisa());
+        try{
+            connex.rs.first();
+            modCompra.setData(connex.rs.getString("data"));
+            modCompra.setValor_total(connex.rs.getString("valor_total"));
+            modCompra.setNumero(connex.rs.getInt("numero"));
         }
+        catch(SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Produto não cadastrado");
+        }
+        connex.desconecta();
+        return modCompra;
     }
 }
