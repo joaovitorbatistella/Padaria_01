@@ -15,7 +15,7 @@ import modeloBeans.modeloCliente;
  */
 public class cliente extends javax.swing.JFrame {
     ConexaoSQL connex = new ConexaoSQL();
-    clienteDao clienteDao = new clienteDao();
+    clienteDao daoCliente = new clienteDao();
     modeloCliente modCliente = new modeloCliente();
     
 
@@ -24,6 +24,7 @@ public class cliente extends javax.swing.JFrame {
      */
     public cliente() {
         initComponents();
+        connex.conexao();
     }
 
     /**
@@ -35,28 +36,38 @@ public class cliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        botaoAtualizar2 = new br.com.cyber.componente.KButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        pesquisaCliente = new javax.swing.JTextField();
         kButton1 = new br.com.cyber.componente.KButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ktable1 = new br.com.cyber.componente.Ktable();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        nomeCliente = new javax.swing.JTextField();
-        cpfCliente = new javax.swing.JTextField();
-        enderecoCliente = new javax.swing.JTextField();
-        telefoneCliente = new javax.swing.JTextField();
-        inadinplenciaCliente = new javax.swing.JTextField();
-        kButton2 = new br.com.cyber.componente.KButton();
-        kButton3 = new br.com.cyber.componente.KButton();
-        kButton4 = new br.com.cyber.componente.KButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        botaoInserir = new br.com.cyber.componente.KButton();
+        jLabel6 = new javax.swing.JLabel();
+        inadinplenciaCliente = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        enderecoCliente = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        nomeCliente = new javax.swing.JTextField();
+        cpfCliente = new javax.swing.JTextField();
+        telefoneCliente = new javax.swing.JTextField();
+        botaoExcluir = new br.com.cyber.componente.KButton();
+        botaoEditar = new br.com.cyber.componente.KButton();
+        botaoNovo = new br.com.cyber.componente.KButton();
+        botaoCancelar = new br.com.cyber.componente.KButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        botaoAtualizar2.setText("Atualizar");
+        botaoAtualizar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAtualizar2ActionPerformed(evt);
+            }
+        });
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 48)); // NOI18N
@@ -64,11 +75,16 @@ public class cliente extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(63, 36, 198, 75);
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(490, 54, 337, 33);
+        pesquisaCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(pesquisaCliente);
+        pesquisaCliente.setBounds(490, 54, 337, 33);
 
         kButton1.setText("Buscar");
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(kButton1);
         kButton1.setBounds(855, 54, 100, 34);
 
@@ -86,73 +102,90 @@ public class cliente extends javax.swing.JFrame {
         jScrollPane1.setViewportView(ktable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(490, 117, 523, 408);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("CPF");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(113, 184, 30, 22);
+        jScrollPane1.setBounds(490, 117, 523, 330);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("NOME");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(94, 150, 49, 22);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("ENDEREÇO");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(54, 218, 89, 22);
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setText("TELEFONE");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(59, 252, 84, 22);
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setText("INADIMPLÊNCIA");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(10, 286, 133, 22);
-
-        nomeCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(nomeCliente);
-        nomeCliente.setBounds(147, 151, 300, 22);
-
-        cpfCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(cpfCliente);
-        cpfCliente.setBounds(147, 185, 300, 22);
-
-        enderecoCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(enderecoCliente);
-        enderecoCliente.setBounds(147, 219, 300, 22);
-
-        telefoneCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(telefoneCliente);
-        telefoneCliente.setBounds(147, 253, 300, 22);
-
-        inadinplenciaCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(inadinplenciaCliente);
-        inadinplenciaCliente.setBounds(147, 287, 300, 22);
-
-        kButton2.setText("INSERIR");
-        kButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(kButton2);
-        kButton2.setBounds(347, 327, 100, 34);
-
-        kButton3.setText("Atualizar");
-        getContentPane().add(kButton3);
-        kButton3.setBounds(176, 505, 111, 34);
-
-        kButton4.setText("Excluir");
-        getContentPane().add(kButton4);
-        kButton4.setBounds(323, 505, 111, 34);
-
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
         jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Desktop\\icone_prrincipal.png")); // NOI18N
+
+        botaoInserir.setText("INSERIR");
+        botaoInserir.setEnabled(false);
+        botaoInserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoInserirActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setText("INADIMPLÊNCIA");
+
+        inadinplenciaCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        inadinplenciaCliente.setEnabled(false);
+        inadinplenciaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inadinplenciaClienteActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setText("TELEFONE");
+
+        enderecoCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        enderecoCliente.setEnabled(false);
+        enderecoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enderecoClienteActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setText("ENDEREÇO");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("CPF");
+
+        nomeCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nomeCliente.setEnabled(false);
+
+        cpfCliente.setEnabled(false);
+        cpfCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpfClienteActionPerformed(evt);
+            }
+        });
+
+        telefoneCliente.setEnabled(false);
+
+        botaoExcluir.setText("Excluir");
+        botaoExcluir.setEnabled(false);
+
+        botaoEditar.setText("Editar");
+        botaoEditar.setEnabled(false);
+        botaoEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEditarActionPerformed(evt);
+            }
+        });
+
+        botaoNovo.setText("Novo");
+        botaoNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoNovoActionPerformed(evt);
+            }
+        });
+
+        botaoCancelar.setText("Cancelar");
+        botaoCancelar.setEnabled(false);
+        botaoCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -160,33 +193,160 @@ public class cliente extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7)
-                .addContainerGap(858, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(nomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(4, 4, 4)
+                                .addComponent(enderecoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(inadinplenciaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cpfCliente)
+                                    .addComponent(telefoneCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE))))
+                        .addGap(0, 312, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botaoInserir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(botaoNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(botaoCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botaoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(375, Short.MAX_VALUE)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(153, 153, 153)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botaoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botaoNovo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botaoCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(nomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(16, 16, 16))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(cpfCliente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(enderecoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(telefoneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inadinplenciaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botaoInserir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1020, 560);
 
-        setSize(new java.awt.Dimension(1037, 608));
+        setSize(new java.awt.Dimension(1037, 562));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
+    private void enderecoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enderecoClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_enderecoClienteActionPerformed
+
+    private void inadinplenciaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inadinplenciaClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inadinplenciaClienteActionPerformed
+
+    private void botaoInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInserirActionPerformed
         // TODO add your handling code here:
         modCliente.setNome(nomeCliente.getText());
         modCliente.setCpf(Long.parseLong(cpfCliente.getText()));
         modCliente.setEndereco(enderecoCliente.getText());
         modCliente.setTelefone(Long.parseLong(telefoneCliente.getText()));
         modCliente.setInadinplencia(inadinplenciaCliente.getText());
-        clienteDao.Salvar(modCliente);
-    }//GEN-LAST:event_kButton2ActionPerformed
+        daoCliente.Salvar(modCliente);
+        nomeCliente.setText("");
+        cpfCliente.setText("");
+        enderecoCliente.setText("");
+        telefoneCliente.setText("");
+        inadinplenciaCliente.setText("");
+        botaoInserir.setEnabled(false);
+        nomeCliente.setEnabled(false);
+        cpfCliente.setEnabled(false);
+        enderecoCliente.setEnabled(false);
+        telefoneCliente.setEnabled(false);
+        inadinplenciaCliente.setEnabled(false);
+        
+        
+    }//GEN-LAST:event_botaoInserirActionPerformed
+
+    private void cpfClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cpfClienteActionPerformed
+
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        // TODO add your handling code here:
+        modCliente.setPesquisa(pesquisaCliente.getText());
+        modeloCliente model = daoCliente.buscaCliente(modCliente);
+        nomeCliente.setText(model.getNome());
+        cpfCliente.setText(String.valueOf(model.getCpf()));
+        enderecoCliente.setText(model.getEndereco());
+        telefoneCliente.setText(String.valueOf(model.getTelefone()));
+        inadinplenciaCliente.setText(model.getInadinplencia());
+        botaoEditar.setEnabled(true);
+        botaoExcluir.setEnabled(true);
+    }//GEN-LAST:event_kButton1ActionPerformed
+
+    private void botaoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoActionPerformed
+        // TODO add your handling code here:
+        nomeCliente.setEnabled(true);
+        cpfCliente.setEnabled(true);
+        enderecoCliente.setEnabled(true);
+        telefoneCliente.setEnabled(true);
+        inadinplenciaCliente.setEnabled(true);
+        botaoInserir.setEnabled(true);
+        
+    }//GEN-LAST:event_botaoNovoActionPerformed
+
+    private void botaoAtualizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAtualizar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoAtualizar2ActionPerformed
+
+    private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoCancelarActionPerformed
+
+    private void botaoEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,6 +385,12 @@ public class cliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private br.com.cyber.componente.KButton botaoAtualizar2;
+    private br.com.cyber.componente.KButton botaoCancelar;
+    private br.com.cyber.componente.KButton botaoEditar;
+    private br.com.cyber.componente.KButton botaoExcluir;
+    private br.com.cyber.componente.KButton botaoInserir;
+    private br.com.cyber.componente.KButton botaoNovo;
     private javax.swing.JTextField cpfCliente;
     private javax.swing.JTextField enderecoCliente;
     private javax.swing.JTextField inadinplenciaCliente;
@@ -237,13 +403,10 @@ public class cliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private br.com.cyber.componente.KButton kButton1;
-    private br.com.cyber.componente.KButton kButton2;
-    private br.com.cyber.componente.KButton kButton3;
-    private br.com.cyber.componente.KButton kButton4;
     private br.com.cyber.componente.Ktable ktable1;
     private javax.swing.JTextField nomeCliente;
+    private javax.swing.JTextField pesquisaCliente;
     private javax.swing.JTextField telefoneCliente;
     // End of variables declaration//GEN-END:variables
 }

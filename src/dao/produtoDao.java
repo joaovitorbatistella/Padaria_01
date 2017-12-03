@@ -37,7 +37,7 @@ public class produtoDao {
     }
 
     
-    public modeloProduto buscaProduto (modeloProduto modProduto) throws ClassNotFoundException, SQLException {
+    public modeloProduto buscaProduto (modeloProduto modProduto) {
     
         connex.conexao();
         

@@ -12,6 +12,20 @@ package modeloBeans;
 public class modeloCliente {
 
     /**
+     * @return the pesquisa
+     */
+    public String getPesquisa() {
+        return pesquisa;
+    }
+
+    /**
+     * @param pesquisa the pesquisa to set
+     */
+    public void setPesquisa(String pesquisa) {
+        this.pesquisa = pesquisa;
+    }
+
+    /**
      * @return the nome
      */
     public String getNome() {
@@ -85,4 +99,5 @@ public class modeloCliente {
     private String endereco;
     private long telefone;
     private String inadinplencia;
+    private String pesquisa;
 }

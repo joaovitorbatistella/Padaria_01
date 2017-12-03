@@ -41,4 +41,24 @@ public class clienteDao {
         }
             connex.desconecta();
     }
+ public modeloCliente buscaCliente (modeloCliente modCliente){
+    
+        connex.conexao();
+        
+        connex.executaSql("SELECT * FROM cliente WHERE nome LIKE '%"+modCliente.getPesquisa()+"%'");
+        try{
+            connex.rs.first();
+            modCliente.setNome(connex.rs.getString("nome"));
+            modCliente.setCpf(Long.parseLong(connex.rs.getString("cpf")));
+            modCliente.setEndereco(connex.rs.getString("endereco"));
+            modCliente.setTelefone(Long.parseLong(connex.rs.getString("telefone")));
+            modCliente.setInadinplencia(connex.rs.getString("inadinplencia"));
+            JOptionPane.showMessageDialog(null, "Cliente encontrado");
+        }
+        catch(SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Cliente não cadastrado");
+        }
+        connex.desconecta();
+        return modCliente;
+    }
 }

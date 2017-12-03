@@ -5,17 +5,21 @@
  */
 package telas;
 
+import persistencia.ConexaoSQL;
+
 /**
  *
  * @author joaov
  */
 public class tela_principal extends javax.swing.JFrame {
+    ConexaoSQL conecta = new ConexaoSQL();
 
     /**
      * Creates new form tela_principal
      */
     public tela_principal() {
         initComponents();
+        conecta.conexao();
     }
 
     /**
@@ -107,7 +111,7 @@ public class tela_principal extends javax.swing.JFrame {
 
     private void clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesActionPerformed
         // TODO add your handling code here:
-        cadastrocliente cliente = new cadastrocliente();
+        cliente cliente = new cliente();
         cliente.setVisible(true);
     }//GEN-LAST:event_clientesActionPerformed
 
