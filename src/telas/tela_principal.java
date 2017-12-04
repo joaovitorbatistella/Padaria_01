@@ -31,6 +31,9 @@ public class tela_principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        func3 = new javax.swing.JButton();
+        func2 = new javax.swing.JButton();
+        func1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         func = new javax.swing.JButton();
@@ -38,9 +41,47 @@ public class tela_principal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        func3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        func3.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Downloads\\icons8-Funcionário homem-80.png")); // NOI18N
+        func3.setToolTipText("Funcionários");
+        func3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                func3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(func3);
+        func3.setBounds(1030, 510, 140, 120);
+
+        func2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        func2.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Downloads\\icons8-Funcionário homem-80.png")); // NOI18N
+        func2.setToolTipText("Funcionários");
+        func2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                func2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(func2);
+        func2.setBounds(1030, 340, 140, 120);
+
+        func1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        func1.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Desktop\\shoppingcart_compra_13339.png")); // NOI18N
+        func1.setText("Compra");
+        func1.setToolTipText("Funcionários");
+        func1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                func1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(func1);
+        func1.setBounds(1030, 180, 140, 120);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic Light", 1, 63)); // NOI18N
         jLabel1.setText("Manutenção");
@@ -93,6 +134,29 @@ public class tela_principal extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 1280, 720);
 
+        jMenu1.setText("Cadastrar");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("Usuários");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Sair");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         setSize(new java.awt.Dimension(1298, 767));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -114,6 +178,34 @@ public class tela_principal extends javax.swing.JFrame {
         cliente cliente = new cliente();
         cliente.setVisible(true);
     }//GEN-LAST:event_clientesActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        usuario usuariotela = new usuario();
+        usuariotela.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void func1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_func1ActionPerformed
+        // TODO add your handling code here:
+        compra cpr = new compra();
+        cpr.setVisible(true);
+    }//GEN-LAST:event_func1ActionPerformed
+
+    private void func2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_func2ActionPerformed
+        // TODO add your handling code here:
+        pagamento pgmnt = new pagamento();
+        pgmnt. setVisible(true);
+    }//GEN-LAST:event_func2ActionPerformed
+
+    private void func3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_func3ActionPerformed
+        // TODO add your handling code here:
+        venda vnd = new venda();
+        vnd.setVisible(true);
+    }//GEN-LAST:event_func3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,10 +245,17 @@ public class tela_principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clientes;
     private javax.swing.JButton func;
+    private javax.swing.JButton func1;
+    private javax.swing.JButton func2;
+    private javax.swing.JButton func3;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }

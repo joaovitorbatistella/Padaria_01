@@ -41,7 +41,6 @@ public class cadastrofuncionarios extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         nome_func = new javax.swing.JTextField();
         end_func = new javax.swing.JTextField();
-        cadastrar_func = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ktable1 = new br.com.cyber.componente.Ktable();
         jLabel5 = new javax.swing.JLabel();
@@ -49,41 +48,47 @@ public class cadastrofuncionarios extends javax.swing.JFrame {
         kButton1 = new br.com.cyber.componente.KButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Perpetua Titling MT", 0, 18)); // NOI18N
         jLabel1.setText("telefone");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(41, 215, 104, 35);
 
         jLabel2.setFont(new java.awt.Font("Perpetua Titling MT", 0, 18)); // NOI18N
         jLabel2.setText("Nome");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(41, 103, 104, 35);
 
         jLabel3.setFont(new java.awt.Font("Perpetua Titling MT", 0, 18)); // NOI18N
         jLabel3.setText("cpf");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(41, 156, 104, 35);
 
         jLabel4.setFont(new java.awt.Font("Perpetua Titling MT", 0, 18)); // NOI18N
         jLabel4.setText("Endereço");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(41, 273, 104, 35);
 
         nome_func.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nome_funcActionPerformed(evt);
             }
         });
+        getContentPane().add(nome_func);
+        nome_func.setBounds(150, 103, 323, 35);
 
         end_func.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 end_funcActionPerformed(evt);
             }
         });
-
-        cadastrar_func.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cadastrar_func.setText("Cadastrar");
-        cadastrar_func.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastrar_funcActionPerformed(evt);
-            }
-        });
+        getContentPane().add(end_func);
+        end_func.setBounds(150, 273, 323, 35);
 
         ktable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -98,8 +103,15 @@ public class cadastrofuncionarios extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(ktable1);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(529, 121, 452, 355);
+
         jLabel5.setFont(new java.awt.Font("Sitka Small", 0, 48)); // NOI18N
         jLabel5.setText("Funcionários");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(41, 13, 316, 61);
+        getContentPane().add(FuncionarioPesquisa);
+        FuncionarioPesquisa.setBounds(529, 40, 301, 38);
 
         kButton1.setBackground(new java.awt.Color(51, 255, 0));
         kButton1.setText("Busca");
@@ -108,81 +120,31 @@ public class cadastrofuncionarios extends javax.swing.JFrame {
                 kButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(kButton1);
+        kButton1.setBounds(837, 40, 100, 34);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(150, 156, 323, 35);
+        getContentPane().add(jTextField2);
+        jTextField2.setBounds(150, 209, 323, 32);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(nome_func, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
-                            .addComponent(end_func)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)))
-                    .addComponent(cadastrar_func, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(FuncionarioPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(39, 39, 39))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nome_func, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(end_func, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addComponent(cadastrar_func, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FuncionarioPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setText("INSERIR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(360, 350, 110, 31);
 
-        pack();
+        setSize(new java.awt.Dimension(1038, 563));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void nome_funcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nome_funcActionPerformed
@@ -194,18 +156,6 @@ public class cadastrofuncionarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_end_funcActionPerformed
 
-    private void cadastrar_funcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrar_funcActionPerformed
-        // TODO add your handling code here:
-        modFun.setNome(nome_func.getText());
-        modFun.setCpf(Integer.parseInt(jTextField1.getText()));
-        modFun.setTelefone(Integer.parseInt(jTextField2.getText()));
-        modFun.setEndereco(end_func.getText());
-        funDao.Salvar(modFun);
-        
-        
-        
-    }//GEN-LAST:event_cadastrar_funcActionPerformed
-
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_kButton1ActionPerformed
@@ -213,6 +163,10 @@ public class cadastrofuncionarios extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,8 +205,8 @@ public class cadastrofuncionarios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField FuncionarioPesquisa;
-    private javax.swing.JButton cadastrar_func;
     private javax.swing.JTextField end_func;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

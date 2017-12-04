@@ -42,18 +42,18 @@ public class modeloCompra {
     /**
      * @return the valor_total
      */
-    public String getValor_total() {
+    public float getValor_total() {
         return valor_total;
     }
 
     /**
      * @param valor_total the valor_total to set
      */
-    public void setValor_total(String valor_total) {
+    public void setValor_total(float valor_total) {
         this.valor_total = valor_total;
     }
     private String data;
-    private String valor_total;
+    private float valor_total;
     private String pesquisa;
     private int numero;
     

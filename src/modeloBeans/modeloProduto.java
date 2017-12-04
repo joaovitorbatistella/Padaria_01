@@ -12,6 +12,20 @@ package modeloBeans;
 public class modeloProduto {
 
     /**
+     * @return the codigo
+     */
+    public int getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * @param codigo the codigo to set
+     */
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    /**
      * @return the descricao
      */
     public String getDescricao() {
@@ -28,28 +42,33 @@ public class modeloProduto {
     /**
      * @return the custo_producao
      */
-    public Double getCusto_producao() {
+    public float getCusto_producao() {
         return custo_producao;
     }
-    
 
     /**
      * @param custo_producao the custo_producao to set
      */
-    public void setCusto_producao(Double custo_producao) {
+    public void setCusto_producao(float custo_producao) {
         this.custo_producao = custo_producao;
     }
-    
-    private String descricao;
-    private Double custo_producao;
-    private String pesquisa;
 
+    /**
+     * @return the pesquisa
+     */
     public String getPesquisa() {
         return pesquisa;
     }
 
+    /**
+     * @param pesquisa the pesquisa to set
+     */
     public void setPesquisa(String pesquisa) {
         this.pesquisa = pesquisa;
     }
+    private String descricao;
+    private float custo_producao;
+    private String pesquisa;
+    private int codigo;
     
 }

@@ -40,7 +40,7 @@ public class pagamentoDao {
     }
 
     
-    public modeloPagamento buscaPagamento (modeloPagamento moPagamento) throws ClassNotFoundException, SQLException {
+    public modeloPagamento buscaPagamento (modeloPagamento moPagamento) {
     
         connex.conexao();
         

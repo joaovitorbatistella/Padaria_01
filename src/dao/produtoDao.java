@@ -25,9 +25,10 @@ public class produtoDao {
         connex.conexao();
         
         try {
-            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO produto(descricao, custo_producao) VALUES (?, ?)");
-            pst.setString(1, modProduto.getDescricao());
-            pst.setDouble(2, modProduto.getCusto_producao());
+            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO produto(descricao, codigo, custo_producao) VALUES (?, ?, ?)");
+            pst.setFloat(1, (modProduto.getCusto_producao()));
+            pst.setInt(2, modProduto.getCodigo());
+            pst.setString(3, modProduto.getDescricao());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso!");
         } catch (SQLException ex) {
@@ -45,7 +46,7 @@ public class produtoDao {
         try{
             connex.rs.first();
             modProduto.setDescricao(connex.rs.getString("descricao"));
-            modProduto.setCusto_producao(connex.rs.getDouble("custo_producao"));
+            modProduto.setCusto_producao(connex.rs.getFloat("custo_descricao"));
         }
         catch(SQLException ex) {
             JOptionPane.showMessageDialog(null, "Produto não cadastrado");
@@ -54,4 +55,3 @@ public class produtoDao {
         return modProduto;
     }
 }
-

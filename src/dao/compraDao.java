@@ -26,9 +26,9 @@ public class compraDao {
         connex.conexao();
         
         try {
-            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO compra(data, valor_total, cod_cliente) VALUES (?, ?, ?)");
+            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO compra(data, valor_total) VALUES (?, ?)");
             pst.setDate(1, Date.valueOf(modCompra.getData()));
-            pst.setDouble(2, Double.parseDouble(modCompra.getValor_total()));
+            pst.setFloat(2, modCompra.getValor_total());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso!");
         } catch (SQLException ex) {
@@ -38,7 +38,7 @@ public class compraDao {
     }
 
     
-    public modeloCompra buscaCompra (modeloCompra mdCompra) throws ClassNotFoundException, SQLException {
+    public modeloCompra buscaCompra (modeloCompra mdCompra){
     
         connex.conexao();
         
@@ -46,7 +46,7 @@ public class compraDao {
         try{
             connex.rs.first();
             modCompra.setData(connex.rs.getString("data"));
-            modCompra.setValor_total(connex.rs.getString("valor_total"));
+            modCompra.setValor_total(connex.rs.getFloat("valor_total"));
             modCompra.setNumero(connex.rs.getInt("numero"));
         }
         catch(SQLException ex) {
