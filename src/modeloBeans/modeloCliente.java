@@ -84,20 +84,20 @@ public class modeloCliente {
     /**
      * @return the inadinplencia
      */
-    public String getInadinplencia() {
-        return inadinplencia;
+    public String getInadimplencia() {
+        return inadimplencia;
     }
 
     /**
      * @param inadinplencia the inadinplencia to set
      */
-    public void setInadinplencia(String inadinplencia) {
-        this.inadinplencia = inadinplencia;
+    public void setInadimplencia(String inadinplencia) {
+        this.inadimplencia = inadinplencia;
     }
     private String nome;
     private long cpf;
     private String endereco;
     private long telefone;
-    private String inadinplencia;
+    private String inadimplencia;
     private String pesquisa;
 }

@@ -70,6 +70,11 @@ public class tela_login extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
         jPanel1.add(jButton1);
         jButton1.setBounds(400, 230, 120, 40);
 
@@ -121,6 +126,25 @@ public class tela_login extends javax.swing.JFrame {
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSenhaActionPerformed
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        // TODO add your handling code here:
+        try {
+            connex.executaSql("select * from usuarios where usu_nome = '"+txtLogin.getText()+"'");
+            connex.rs.first();
+            if(connex.rs.getString("usu_nome").equals(txtSenha.getText())){
+                tela_principal telaPrincipal = new tela_principal();
+                telaPrincipal.setVisible(true);
+                dispose();
+                JOptionPane.showMessageDialog(null, "Bem Vindo!");
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Usuário ou senha inválidos");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Usuário ou senha inválidos" + ex);
+        }
+        
+    }//GEN-LAST:event_jButton1KeyPressed
 
     /**
      * @param args the command line arguments

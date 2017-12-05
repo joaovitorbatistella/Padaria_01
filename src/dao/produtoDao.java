@@ -25,10 +25,9 @@ public class produtoDao {
         connex.conexao();
         
         try {
-            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO produto(descricao, codigo, custo_producao) VALUES (?, ?, ?)");
-            pst.setFloat(1, (modProduto.getCusto_producao()));
-            pst.setInt(2, modProduto.getCodigo());
-            pst.setString(3, modProduto.getDescricao());
+            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO produto(descricao, custo_producao) VALUES (?, ?)");
+            pst.setFloat(1, modProduto.getCusto_producao());
+            pst.setString(2, modProduto.getDescricao());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso!");
         } catch (SQLException ex) {

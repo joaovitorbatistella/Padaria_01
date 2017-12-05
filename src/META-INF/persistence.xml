@@ -4,6 +4,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>telas.Salario_1</class>
     <class>telas.CompraProduto</class>
+    <class>telas.Cliente_1</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Padaria_07"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>

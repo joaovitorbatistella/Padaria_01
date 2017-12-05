@@ -32,7 +32,7 @@ public class clienteDao {
             pst.setLong(2, modCliente.getCpf()); //exemplo de hora
             pst.setString(3, modCliente.getEndereco()); //exemplo de data
             pst.setLong(4, modCliente.getTelefone()); //Exemplo de String
-            pst.setString(5, modCliente.getInadinplencia());
+            pst.setString(5, modCliente.getInadimplencia());
             pst.execute(); //executa SQL preparada
             JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso");
         } catch (SQLException ex) {
@@ -52,11 +52,10 @@ public class clienteDao {
             modCliente.setCpf(Long.parseLong(connex.rs.getString("cpf")));
             modCliente.setEndereco(connex.rs.getString("endereco"));
             modCliente.setTelefone(Long.parseLong(connex.rs.getString("telefone")));
-            modCliente.setInadinplencia(connex.rs.getString("inadinplencia"));
-            JOptionPane.showMessageDialog(null, "Cliente encontrado");
+            modCliente.setInadimplencia(connex.rs.getString("inadimplencia"));
         }
         catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Cliente não cadastrado");
+            JOptionPane.showMessageDialog(null, "Cliente não cadastrado" + ex);
         }
         connex.desconecta();
         return modCliente;

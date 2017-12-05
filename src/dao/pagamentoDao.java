@@ -9,6 +9,7 @@ import java.sql.Date;
 import persistencia.ConexaoSQL;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import modeloBeans.modeloPagamento;
 
@@ -26,11 +27,10 @@ public class pagamentoDao {
         connex.conexao();
         
         try {
-            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO produto(valor, data_pagamento, data_vencimento) VALUES (?, ?, ?)");
-            pst.setDouble(1, Double.parseDouble((modPagamento.getValor())));
-            pst.setDate(2, Date.valueOf(modPagamento.getData_pagamento()));
-            pst.setDate(3, Date.valueOf(modPagamento.getData_vencimento()));
-            pst.setInt(4, modPagamento.getCod_venda());
+            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO pagamento(valor, data_pagamento, data_vencimento) VALUES (?, ?, ?)");
+            pst.setFloat(1, (modPagamento.getValor()));
+            pst.setDate(2, (Date.valueOf(modPagamento.getData_pagamento())));
+            pst.setDate(3, (Date.valueOf(modPagamento.getData_vencimento())));
             pst.execute();
             JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso!");
         } catch (SQLException ex) {
@@ -44,10 +44,10 @@ public class pagamentoDao {
     
         connex.conexao();
         
-        connex.executaSql("SELECT * FROM produto WHERE descricao LIKE '%'"+modPagamento.getPesquisa());
+        connex.executaSql("SELECT * FROM pagamento WHERE cod_venda LIKE '%'"+modPagamento.getPesquisa());
         try{
             connex.rs.first();
-            modPagamento.setValor(connex.rs.getString("valor"));
+            modPagamento.setValor(connex.rs.getFloat("valor"));
             modPagamento.setData_pagamento(connex.rs.getString("data_pagamento"));
             modPagamento.setData_vencimento(connex.rs.getString("data_vencimento"));
             modPagamento.setCod_venda(connex.rs.getInt("cod_venda"));
