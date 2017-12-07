@@ -5,7 +5,6 @@
  */
 package dao;
 
-import com.sun.javafx.scene.control.skin.FXVK;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -31,8 +30,8 @@ public class PadariaDao {
         PreparedStatement pst = connex.con.prepareStatement("INSERT INTO padaria(email, endereco, telefone, cnpj) VALUES (?, ?, ?, ?)");
             pst.setString(1, modPadaria.getEmail());// primeiro parâmetro indica a ? correspondente, segundo parâmetro a variável que substituirá a ?
             pst.setString(2, modPadaria.getEndereco()); //exemplo de data
-            pst.setLong(4, modPadaria.getTelefone()); //Exemplo de String
-            pst.setLong(5, modPadaria.getCnpj());
+            pst.setLong(3, modPadaria.getTelefone()); //Exemplo de String
+            pst.setLong(4, modPadaria.getCnpj());
             pst.execute(); //executa SQL preparada
             JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso");
         } catch (SQLException ex) {
@@ -41,26 +40,24 @@ public class PadariaDao {
         }
             connex.desconecta();
     }
- public modelopadaria buscaPadaria (modelopadaria modpadaria){
+ public modelopadaria buscaPadaria (modelopadaria modPadaria){
     
         connex.conexao();
         
-        connex.executaSql("SELECT * FROM padaria WHERE cnpj LIKE '%"+modpadaria.getPesquisa()+"%'");
+        connex.executaSql("SELECT * FROM padaria WHERE cnpj = '"+modPadaria.getPesquisa()+"'");
         try{
             connex.rs.first();
-            modpadaria.setEmail(connex.rs.getString("email"));
-            modpadaria.setEndereco(connex.rs.getString("endereco"));
-            modpadaria.setTelefone(Long.parseLong(connex.rs.getString("telefone")));
-            modpadaria.setCnpj(Long.parseLong(connex.rs.getString("cnpj")));
+            modPadaria.setEmail(connex.rs.getString("email"));
+            modPadaria.setEndereco(connex.rs.getString("endereco"));
+            modPadaria.setTelefone(Long.parseLong(connex.rs.getString("telefone")));
+            modPadaria.setCnpj(Long.parseLong(connex.rs.getString("cnpj")));
+            modPadaria.setCodigo(connex.rs.getInt("codigo"));
         }
         catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Cliente não cadastrado");
+            JOptionPane.showMessageDialog(null, "Cliente não cadastrado" +ex);
         }
         connex.desconecta();
-        return modpadaria;
-    }
-
-    public modelopadaria buscaCliente(modelopadaria modPadaria) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return modPadaria;
+           
     }
 }

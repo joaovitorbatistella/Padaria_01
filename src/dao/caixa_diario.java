@@ -42,7 +42,7 @@ public class caixa_diario {
     
         connex.conexao();
         
-        connex.executaSql("SELECT * FROM caixa_diario WHERE data LIKE '%"+modCaixadiCaixa_diario.getPesquisa()+"%'");
+        connex.executaSql("SELECT * FROM caixa_diario WHERE data = '"+moCaixa_diario.getPesquisa()+"'");
         try{
             connex.rs.first();
             modCaixadiCaixa_diario.setData(connex.rs.getString("data"));
@@ -56,7 +56,4 @@ public class caixa_diario {
         return modCaixadiCaixa_diario;
     }
 
-    public void setVisible(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

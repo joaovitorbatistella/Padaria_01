@@ -36,7 +36,7 @@ public class clienteDao {
             pst.execute(); //executa SQL preparada
             JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao inserir dados!/nError:"+ex);
+            JOptionPane.showMessageDialog(null, "Erro ao inserir dados!/nError:" +ex);
            
         }
             connex.desconecta();

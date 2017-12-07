@@ -6,6 +6,11 @@
 package telas;
 
 import dao.PadariaDao;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import modeloBeans.ModeloTabela;
 import modeloBeans.modelopadaria;
 import persistencia.ConexaoSQL;
 
@@ -16,7 +21,7 @@ import persistencia.ConexaoSQL;
 public class padaria extends javax.swing.JFrame {
     ConexaoSQL connex = new ConexaoSQL();
     modelopadaria modPadaria = new modelopadaria();
-    PadariaDao daopadaria = new PadariaDao();
+    PadariaDao daoPadaria = new PadariaDao();
 
     /**
      * Creates new form padaria
@@ -24,6 +29,7 @@ public class padaria extends javax.swing.JFrame {
     public padaria() {
         initComponents();
         connex.conexao();
+        preencherTabela("select * from padaria order by codigo");
     }
 
     /**
@@ -50,7 +56,7 @@ public class padaria extends javax.swing.JFrame {
         pesquisarPADARIA = new javax.swing.JTextField();
         buscarPADARIA = new br.com.cyber.componente.KButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ktable1 = new br.com.cyber.componente.Ktable();
+        tabelaPadaria = new br.com.cyber.componente.Ktable();
         botaoINSERIR = new javax.swing.JButton();
         boatoNOVO = new javax.swing.JButton();
         botaoEDITAR = new javax.swing.JButton();
@@ -80,14 +86,6 @@ public class padaria extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("CÓDIGO");
 
-        emailPADARIA.setEnabled(false);
-
-        enderecoPADARIA.setEnabled(false);
-
-        telefonePADARIA.setEnabled(false);
-
-        cnpjPADARIA.setEnabled(false);
-
         codigoPADARIA.setEnabled(false);
 
         buscarPADARIA.setBackground(new java.awt.Color(0, 255, 0));
@@ -98,7 +96,7 @@ public class padaria extends javax.swing.JFrame {
             }
         });
 
-        ktable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaPadaria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -109,11 +107,10 @@ public class padaria extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(ktable1);
+        jScrollPane1.setViewportView(tabelaPadaria);
 
         botaoINSERIR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoINSERIR.setText("INSERIR");
-        botaoINSERIR.setEnabled(false);
         botaoINSERIR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoINSERIRActionPerformed(evt);
@@ -144,58 +141,59 @@ public class padaria extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6))
+                                .addComponent(jLabel5))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cnpjPADARIA, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                                .addComponent(telefonePADARIA, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(codigoPADARIA, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(13, 13, 13))))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel2))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(emailPADARIA, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                                .addComponent(enderecoPADARIA)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(132, 132, 132)
+                            .addComponent(botaoINSERIR)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(136, 136, 136)
+                        .addComponent(jLabel1)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
                         .addComponent(boatoNOVO, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(botaoCANCELAR)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(botaoEXCLUIR)
-                        .addGap(18, 18, 18)
-                        .addComponent(botaoEDITAR))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botaoEDITAR)
+                        .addContainerGap(52, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel6))
-                                        .addComponent(jLabel5))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(cnpjPADARIA, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
-                                        .addComponent(telefonePADARIA, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(codigoPADARIA, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(13, 13, 13))))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel2))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(emailPADARIA, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
-                                        .addComponent(enderecoPADARIA)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(132, 132, 132)
-                                    .addComponent(botaoINSERIR)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(136, 136, 136)
-                                .addComponent(jLabel1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(pesquisarPADARIA, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pesquisarPADARIA, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(buscarPADARIA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(36, 36, 36))
+                                .addComponent(buscarPADARIA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,16 +203,7 @@ public class padaria extends javax.swing.JFrame {
                     .addComponent(pesquisarPADARIA, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buscarPADARIA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(boatoNOVO)
-                            .addComponent(botaoEXCLUIR)
-                            .addComponent(botaoCANCELAR)
-                            .addComponent(botaoEDITAR)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -231,7 +220,7 @@ public class padaria extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 17, Short.MAX_VALUE)
+                                .addGap(0, 13, Short.MAX_VALUE)
                                 .addComponent(jLabel5))
                             .addComponent(cnpjPADARIA))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -241,8 +230,18 @@ public class padaria extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botaoINSERIR))))
-                .addContainerGap(23, Short.MAX_VALUE))
+                            .addComponent(botaoINSERIR)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(boatoNOVO)
+                            .addComponent(botaoCANCELAR)
+                            .addComponent(botaoEXCLUIR)
+                            .addComponent(botaoEDITAR))
+                        .addGap(74, 74, 74)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -265,7 +264,7 @@ public class padaria extends javax.swing.JFrame {
         modPadaria.setEndereco(enderecoPADARIA.getText());
         modPadaria.setTelefone(Long.parseLong(telefonePADARIA.getText()));
         modPadaria.setCnpj(Long.parseLong(cnpjPADARIA.getText()));
-        daopadaria.Salvar(modPadaria);
+        daoPadaria.Salvar(modPadaria);
         emailPADARIA.setText("");
         enderecoPADARIA.setText("");
         telefonePADARIA.setText("");
@@ -275,6 +274,7 @@ public class padaria extends javax.swing.JFrame {
         enderecoPADARIA.setEnabled(false);
         telefonePADARIA.setEnabled(false);
         cnpjPADARIA.setEnabled(false);
+        
     }//GEN-LAST:event_botaoINSERIRActionPerformed
 
     private void boatoNOVOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boatoNOVOActionPerformed
@@ -289,7 +289,7 @@ public class padaria extends javax.swing.JFrame {
     private void buscarPADARIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPADARIAActionPerformed
         // TODO add your handling code here:
         modPadaria.setPesquisa(pesquisarPADARIA.getText());
-        modelopadaria model = daopadaria.buscaPadaria(modPadaria);
+        modelopadaria model = daoPadaria.buscaPadaria(modPadaria);
         emailPADARIA.setText(model.getEmail());
         enderecoPADARIA.setText(model.getEndereco());
         telefonePADARIA.setText(String.valueOf(model.getTelefone()));
@@ -300,8 +300,39 @@ public class padaria extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarPADARIAActionPerformed
 
     /**
-     * @param args the command line arguments
+     * @param Sql
      */
+    public void preencherTabela(String Sql){
+        ArrayList dados = new ArrayList();
+        String[] colunas = new String[]{"codigo","email","telefone","cnpj"};
+        connex.conexao();
+        
+        connex.executaSql(Sql);
+         try {
+            connex.rs.first();
+            do {
+                dados.add(new Object[]{connex.rs.getInt("codigo"), connex.rs.getString("email"), connex.rs.getLong("telefone"), connex.rs.getLong("cnpj")});
+            } while (connex.rs.next());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Busque outro produto na tabela" +ex);
+            
+        }
+        ModeloTabela modelo = new ModeloTabela(dados, colunas);
+
+        tabelaPadaria.setModel(modelo);
+        tabelaPadaria.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tabelaPadaria.getColumnModel().getColumn(0).setResizable(false);
+        tabelaPadaria.getColumnModel().getColumn(1).setPreferredWidth(140);
+        tabelaPadaria.getColumnModel().getColumn(1).setResizable(false);
+        tabelaPadaria.getColumnModel().getColumn(2).setPreferredWidth(140);
+        tabelaPadaria.getColumnModel().getColumn(2).setResizable(false);
+        tabelaPadaria.getColumnModel().getColumn(3).setPreferredWidth(140);
+        tabelaPadaria.getColumnModel().getColumn(3).setResizable(false);
+
+        tabelaPadaria.setAutoResizeMode(tabelaPadaria.AUTO_RESIZE_OFF);
+        tabelaPadaria.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        connex.desconecta();
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -354,8 +385,8 @@ public class padaria extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private br.com.cyber.componente.Ktable ktable1;
     private javax.swing.JTextField pesquisarPADARIA;
+    private br.com.cyber.componente.Ktable tabelaPadaria;
     private javax.swing.JTextField telefonePADARIA;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,6 +12,34 @@ package modeloBeans;
 public class modeloFuncionario {
 
     /**
+     * @return the codigo
+     */
+    public int getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * @param codigo the codigo to set
+     */
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    /**
+     * @return the pesquisa
+     */
+    public String getPesquisa() {
+        return pesquisa;
+    }
+
+    /**
+     * @param pesquisa the pesquisa to set
+     */
+    public void setPesquisa(String pesquisa) {
+        this.pesquisa = pesquisa;
+    }
+
+    /**
      * @return the nome
      */
     public String getNome() {
@@ -28,14 +56,14 @@ public class modeloFuncionario {
     /**
      * @return the cpf
      */
-    public int getCpf() {
+    public long getCpf() {
         return cpf;
     }
 
     /**
      * @param cpf the cpf to set
      */
-    public void setCpf(int cpf) {
+    public void setCpf(long cpf) {
         this.cpf = cpf;
     }
 
@@ -56,20 +84,22 @@ public class modeloFuncionario {
     /**
      * @return the telefone
      */
-    public int getTelefone() {
+    public long getTelefone() {
         return telefone;
     }
 
     /**
      * @param telefone the telefone to set
      */
-    public void setTelefone(int telefone) {
+    public void setTelefone(long telefone) {
         this.telefone = telefone;
     }
     
     private String nome;
-    private int cpf;
+    private long cpf;
     private String endereco;
-    private int telefone;
+    private long telefone;
+    private String pesquisa;
+    private int codigo;
     
 }

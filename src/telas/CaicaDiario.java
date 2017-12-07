@@ -6,6 +6,11 @@
 package telas;
 
 import dao.caixa_diario;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import modeloBeans.ModeloTabela;
 import modeloBeans.modeloCaixa_diario;
 import persistencia.ConexaoSQL;
 
@@ -13,7 +18,7 @@ import persistencia.ConexaoSQL;
  *
  * @author joaov
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class CaicaDiario extends javax.swing.JFrame {
     ConexaoSQL connex = new ConexaoSQL();
     modeloCaixa_diario modCaixaD = new modeloCaixa_diario();
     caixa_diario caixadiarioDao = new caixa_diario();
@@ -21,9 +26,10 @@ public class NewJFrame extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public NewJFrame() {
+    public CaicaDiario() {
         initComponents();
         connex.conexao();
+        preencherTabela("SELECT * from caixa_diario order by data");
     }
 
     /**
@@ -46,7 +52,7 @@ public class NewJFrame extends javax.swing.JFrame {
         pesquisaCaixa = new javax.swing.JTextField();
         kButton1 = new br.com.cyber.componente.KButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ktable1 = new br.com.cyber.componente.Ktable();
+        tabelaCaixa = new br.com.cyber.componente.Ktable();
         botaoINSERIR = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -54,7 +60,7 @@ public class NewJFrame extends javax.swing.JFrame {
         botaoEXCLUIR = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -84,7 +90,7 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        ktable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaCaixa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -95,7 +101,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(ktable1);
+        jScrollPane1.setViewportView(tabelaCaixa);
 
         botaoINSERIR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoINSERIR.setText("INSERIR");
@@ -168,16 +174,17 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(valorCaixa)
                                     .addComponent(dataCaixa))))
+                        .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
                                 .addComponent(pesquisaCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(42, 42, 42))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(24, 24, 24)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)))))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,10 +196,6 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addComponent(pesquisaCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,17 +210,24 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(codCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(206, 206, 206)
                                 .addComponent(botaoINSERIR)
-                                .addGap(29, 29, 29)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton2)
-                                    .addComponent(jButton3)
-                                    .addComponent(botaoEDITAR)
-                                    .addComponent(botaoEXCLUIR)))
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(29, 29, 29))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButton2)
+                                .addComponent(botaoEDITAR)
+                                .addComponent(botaoEXCLUIR)))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -238,7 +248,7 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         dataCaixa.setEnabled(true);
         valorCaixa.setEnabled(true);
-        botaoINSERIR.setEnabled(true);
+        botaoINSERIR.setEnabled(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void botaoINSERIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoINSERIRActionPerformed
@@ -266,7 +276,35 @@ public class NewJFrame extends javax.swing.JFrame {
 
     /**
      * @param args the command line arguments
-     */
+     */public void preencherTabela(String Sql){
+        ArrayList dados = new ArrayList();
+        String[] colunas = new String[]{"data","valor","cod_padaria"};
+        connex.conexao();
+        
+        connex.executaSql(Sql);
+         try {
+            connex.rs.first();
+            do {
+                dados.add(new Object[]{connex.rs.getDate("data"), connex.rs.getFloat("valor"), connex.rs.getInt("cod_padaria")});
+            } while (connex.rs.next());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Busque outro produto na tabela");
+            
+        }
+        ModeloTabela modelo = new ModeloTabela(dados, colunas);
+
+        tabelaCaixa.setModel(modelo);
+        tabelaCaixa.getColumnModel().getColumn(0).setPreferredWidth(140);
+        tabelaCaixa.getColumnModel().getColumn(0).setResizable(false);
+        tabelaCaixa.getColumnModel().getColumn(1).setPreferredWidth(140);
+        tabelaCaixa.getColumnModel().getColumn(1).setResizable(false);
+        tabelaCaixa.getColumnModel().getColumn(2).setPreferredWidth(140);
+        tabelaCaixa.getColumnModel().getColumn(2).setResizable(false);
+
+        tabelaCaixa.setAutoResizeMode(tabelaCaixa.AUTO_RESIZE_OFF);
+        tabelaCaixa.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        connex.desconecta();
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -295,7 +333,7 @@ public class NewJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                new CaicaDiario().setVisible(true);
             }
         });
     }
@@ -316,8 +354,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private br.com.cyber.componente.KButton kButton1;
-    private br.com.cyber.componente.Ktable ktable1;
     private javax.swing.JTextField pesquisaCaixa;
+    private br.com.cyber.componente.Ktable tabelaCaixa;
     private javax.swing.JTextField valorCaixa;
     // End of variables declaration//GEN-END:variables
 }

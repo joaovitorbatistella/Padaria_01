@@ -26,9 +26,10 @@ public class compraDao {
         connex.conexao();
         
         try {
-            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO compra(data, valor_total) VALUES (?, ?)");
+            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO compra(data, valor_total, numero) VALUES (?, ?, ?)");
             pst.setDate(1, Date.valueOf(modCompra.getData()));
             pst.setFloat(2, modCompra.getValor_total());
+            pst.setInt(3, modCompra.getNumero());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso!");
         } catch (SQLException ex) {
@@ -38,11 +39,11 @@ public class compraDao {
     }
 
     
-    public modeloCompra buscaCompra (modeloCompra mdCompra){
+    public modeloCompra buscaCompra (modeloCompra modCompra){
     
         connex.conexao();
         
-        connex.executaSql("SELECT * FROM compra WHERE numero LIKE '%'"+modCompra.getPesquisa());
+        connex.executaSql("SELECT * FROM compra WHERE numero = '"+modCompra.getPesquisa()+"'");
         try{
             connex.rs.first();
             modCompra.setData(connex.rs.getString("data"));

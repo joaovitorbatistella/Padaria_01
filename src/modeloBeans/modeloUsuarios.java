@@ -12,6 +12,20 @@ package modeloBeans;
 public class modeloUsuarios {
 
     /**
+     * @return the pesquisa
+     */
+    public String getPesquisa() {
+        return pesquisa;
+    }
+
+    /**
+     * @param pesquisa the pesquisa to set
+     */
+    public void setPesquisa(String pesquisa) {
+        this.pesquisa = pesquisa;
+    }
+
+    /**
      * @return the usu_cod
      */
     public int getUsu_cod() {
@@ -55,5 +69,6 @@ public class modeloUsuarios {
     private int usu_cod;
     private String usu_nome;
     private String usu_senha;
+    private String pesquisa;
     
 }

@@ -7,8 +7,8 @@ package telas;
 
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import modeloBeans.modeloUsuarios;
 import persistencia.ConexaoSQL;
+import modeloBeans.modeloUsuarios;
 
 /**
  *
@@ -16,7 +16,7 @@ import persistencia.ConexaoSQL;
  */
 public class tela_login extends javax.swing.JFrame {
     ConexaoSQL connex = new ConexaoSQL();
-    modeloBeans.modeloUsuarios modelousuarios = new modeloUsuarios();
+    modeloUsuarios modUsu = new modeloUsuarios();
 
     /**
      * Creates new form tela_login
@@ -129,20 +129,6 @@ public class tela_login extends javax.swing.JFrame {
 
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
         // TODO add your handling code here:
-        try {
-            connex.executaSql("select * from usuarios where usu_nome = '"+txtLogin.getText()+"'");
-            connex.rs.first();
-            if(connex.rs.getString("usu_nome").equals(txtSenha.getText())){
-                tela_principal telaPrincipal = new tela_principal();
-                telaPrincipal.setVisible(true);
-                dispose();
-                JOptionPane.showMessageDialog(null, "Bem Vindo!");
-            }else{
-                JOptionPane.showMessageDialog(rootPane, "Usuário ou senha inválidos");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(rootPane, "Usuário ou senha inválidos" + ex);
-        }
         
     }//GEN-LAST:event_jButton1KeyPressed
 
