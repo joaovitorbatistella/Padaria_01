@@ -66,6 +66,7 @@ public class funcionario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setEnabled(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Funcionário");
@@ -85,8 +86,19 @@ public class funcionario extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel6.setText("Código:");
 
+        telefoneFUNCIONARIO.setEnabled(false);
+
+        enderecoFUNCIONARIO.setEnabled(false);
+
+        nomeFUNCIONARIO.setEnabled(false);
+
+        cpfFUNCIONARIO.setEnabled(false);
+
+        codFUNCIONARIO.setEnabled(false);
+
         botaoINSERIR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoINSERIR.setText("INSERIR");
+        botaoINSERIR.setEnabled(false);
         botaoINSERIR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoINSERIRActionPerformed(evt);
@@ -116,15 +128,23 @@ public class funcionario extends javax.swing.JFrame {
 
         botaoNOVO.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoNOVO.setText("NOVO");
+        botaoNOVO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoNOVOActionPerformed(evt);
+            }
+        });
 
         botaoCANCELAR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoCANCELAR.setText("CANCELAR");
+        botaoCANCELAR.setEnabled(false);
 
         botaoEDITAR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoEDITAR.setText("EDITAR");
+        botaoEDITAR.setEnabled(false);
 
         botaoEXCLUIR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoEXCLUIR.setText("EXCLUIR");
+        botaoEXCLUIR.setEnabled(false);
 
         jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Desktop\\icone_prrincipal.png")); // NOI18N
 
@@ -166,11 +186,11 @@ public class funcionario extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botaoNOVO)
-                        .addGap(18, 18, 18)
+                        .addGap(62, 62, 62)
                         .addComponent(botaoCANCELAR)
-                        .addGap(18, 18, 18)
+                        .addGap(94, 94, 94)
                         .addComponent(botaoEDITAR)
-                        .addGap(18, 18, 18)
+                        .addGap(95, 95, 95)
                         .addComponent(botaoEXCLUIR)
                         .addGap(28, 28, 28))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -280,6 +300,19 @@ public class funcionario extends javax.swing.JFrame {
         botaoEDITAR.setEnabled(true);
         botaoEXCLUIR.setEnabled(true);
     }//GEN-LAST:event_botaoBuscarActionPerformed
+
+    private void botaoNOVOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNOVOActionPerformed
+        // TODO add your handling code here:
+         botaoINSERIR.setEnabled(true);
+        telefoneFUNCIONARIO.setEnabled(true);
+        enderecoFUNCIONARIO.setEnabled(true);
+        nomeFUNCIONARIO.setEnabled(true);
+        cpfFUNCIONARIO.setEnabled(true);
+        telefoneFUNCIONARIO.setText("");
+        enderecoFUNCIONARIO.setText("");
+        nomeFUNCIONARIO.setText("");
+        cpfFUNCIONARIO.setText("");
+    }//GEN-LAST:event_botaoNOVOActionPerformed
 
     /**
      * @param args the command line arguments

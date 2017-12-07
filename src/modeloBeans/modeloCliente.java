@@ -12,6 +12,20 @@ package modeloBeans;
 public class modeloCliente {
 
     /**
+     * @return the codigo
+     */
+    public int getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * @param codigo the codigo to set
+     */
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    /**
      * @return the pesquisa
      */
     public String getPesquisa() {
@@ -100,4 +114,5 @@ public class modeloCliente {
     private long telefone;
     private String inadimplencia;
     private String pesquisa;
+    private int codigo;
 }

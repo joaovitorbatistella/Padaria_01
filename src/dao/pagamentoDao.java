@@ -9,7 +9,6 @@ import java.sql.Date;
 import persistencia.ConexaoSQL;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import modeloBeans.modeloPagamento;
 
@@ -21,7 +20,7 @@ public class pagamentoDao {
     
     ConexaoSQL connex = new ConexaoSQL();
     modeloPagamento modPagamento = new modeloPagamento();
-
+    
     public void Salvar(modeloPagamento modPagamento) {
         
         connex.conexao();
@@ -40,11 +39,11 @@ public class pagamentoDao {
     }
 
     
-    public modeloPagamento buscaPagamento (modeloPagamento moPagamento) {
+    public modeloPagamento buscaPagamento (modeloPagamento modPagamento) {
     
         connex.conexao();
         
-        connex.executaSql("SELECT * FROM pagamento WHERE cod_venda LIKE '%'"+modPagamento.getPesquisa());
+        connex.executaSql("SELECT * FROM pagamento WHERE cod_venda = '"+ modPagamento.getPesquisa()+"'");
         try{
             connex.rs.first();
             modPagamento.setValor(connex.rs.getFloat("valor"));
@@ -53,9 +52,9 @@ public class pagamentoDao {
             modPagamento.setCod_venda(connex.rs.getInt("cod_venda"));
         }
         catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Produto não cadastrado");
+            JOptionPane.showMessageDialog(null, "Produto não cadastrado" +ex);
         }
         connex.desconecta();
-        return moPagamento;
+        return modPagamento;
     }
 }

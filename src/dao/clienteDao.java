@@ -53,6 +53,7 @@ public class clienteDao {
             modCliente.setEndereco(connex.rs.getString("endereco"));
             modCliente.setTelefone(Long.parseLong(connex.rs.getString("telefone")));
             modCliente.setInadimplencia(connex.rs.getString("inadimplencia"));
+            modCliente.setCodigo(connex.rs.getInt("codigo"));
         }
         catch(SQLException ex) {
             JOptionPane.showMessageDialog(null, "Cliente não cadastrado" + ex);

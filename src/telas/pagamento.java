@@ -8,6 +8,11 @@ package telas;
 import persistencia.ConexaoSQL;
 import modeloBeans.modeloPagamento;
 import dao.pagamentoDao;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import modeloBeans.ModeloTabela;
 
 /**
  *
@@ -24,6 +29,7 @@ public class pagamento extends javax.swing.JFrame {
     public pagamento() {
         initComponents();
         connex.conexao();
+        preencherTabela("SELECT * from pagamento order by cod_pagamento");
     }
 
     /**
@@ -50,7 +56,7 @@ public class pagamento extends javax.swing.JFrame {
         kButton1 = new br.com.cyber.componente.KButton();
         pesquisaPagamento = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ktable1 = new br.com.cyber.componente.Ktable();
+        tabelaPagamento = new br.com.cyber.componente.Ktable();
         jLabel9 = new javax.swing.JLabel();
         valorPagamento = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -125,7 +131,7 @@ public class pagamento extends javax.swing.JFrame {
 
         pesquisaPagamento.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        ktable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaPagamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -136,7 +142,7 @@ public class pagamento extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(ktable1);
+        jScrollPane1.setViewportView(tabelaPagamento);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setText("VALOR");
@@ -168,7 +174,7 @@ public class pagamento extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 277, Short.MAX_VALUE)
                                 .addComponent(botaoInserir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -190,23 +196,23 @@ public class pagamento extends javax.swing.JFrame {
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(pesquisaPagamento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(pesquisaPagamento)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(40, 40, 40))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(botaoNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(botaoCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(botaoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(48, Short.MAX_VALUE))))
+                        .addComponent(botaoNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addComponent(botaoCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(botaoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,9 +261,9 @@ public class pagamento extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 1020, 600);
+        jPanel1.setBounds(0, 0, 1150, 600);
 
-        setSize(new java.awt.Dimension(1008, 524));
+        setSize(new java.awt.Dimension(1164, 524));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -305,7 +311,7 @@ public class pagamento extends javax.swing.JFrame {
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
         // TODO add your handling code here:
         modPagamento.setPesquisa(pesquisaPagamento.getText());
-        modeloPagamento model = daoPagamento(modPagamento);
+        modeloPagamento model = daoPagamento.buscaPagamento(modPagamento);
         dataPagamento.setText(model.getData_pagamento());
         dataVencimento.setText(model.getData_vencimento());
         valorPagamento.setText(String.valueOf(model.getValor()));
@@ -322,6 +328,40 @@ public class pagamento extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    public void preencherTabela(String Sql){
+        ArrayList dados = new ArrayList();
+        String[] colunas = new String[]{"valor","data_pagamento","data_vencimento","cod_pagamento","cod_venda"};
+        connex.conexao();
+        
+        connex.executaSql(Sql);
+         try {
+            connex.rs.first();
+            do {
+                dados.add(new Object[]{connex.rs.getString("valor"), connex.rs.getString("data_pagamento"), connex.rs.getString("data_vencimento"), connex.rs.getLong("cod_pagamento"), connex.rs.getString("cod_venda")});
+            } while (connex.rs.next());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Busque outro produto na tabela");
+            
+        }
+        ModeloTabela modelo = new ModeloTabela(dados, colunas);
+
+        tabelaPagamento.setModel(modelo);
+        tabelaPagamento.getColumnModel().getColumn(0).setPreferredWidth(140);
+        tabelaPagamento.getColumnModel().getColumn(0).setResizable(false);
+        tabelaPagamento.getColumnModel().getColumn(1).setPreferredWidth(140);
+        tabelaPagamento.getColumnModel().getColumn(1).setResizable(false);
+        tabelaPagamento.getColumnModel().getColumn(2).setPreferredWidth(140);
+        tabelaPagamento.getColumnModel().getColumn(2).setResizable(false);
+        tabelaPagamento.getColumnModel().getColumn(3).setPreferredWidth(70);
+        tabelaPagamento.getColumnModel().getColumn(3).setResizable(false);
+        tabelaPagamento.getColumnModel().getColumn(4).setPreferredWidth(70);
+        tabelaPagamento.getColumnModel().getColumn(4).setResizable(false);
+      
+
+        tabelaPagamento.setAutoResizeMode(tabelaPagamento.AUTO_RESIZE_OFF);
+        tabelaPagamento.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        connex.desconecta();
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -372,8 +412,8 @@ public class pagamento extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private br.com.cyber.componente.KButton kButton1;
-    private br.com.cyber.componente.Ktable ktable1;
     private javax.swing.JTextField pesquisaPagamento;
+    private br.com.cyber.componente.Ktable tabelaPagamento;
     private javax.swing.JTextField valorPagamento;
     // End of variables declaration//GEN-END:variables
 
