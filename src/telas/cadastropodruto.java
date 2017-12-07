@@ -10,6 +10,8 @@ import modeloBeans.modeloProduto;
 import dao.produtoDao;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import modeloBeans.ModeloTabela;
@@ -75,6 +77,11 @@ public class cadastropodruto extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabelaPRODUTO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaPRODUTOMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelaPRODUTO);
 
         jLabel3.setFont(new java.awt.Font("Sitka Text", 0, 60)); // NOI18N
@@ -326,6 +333,24 @@ public class cadastropodruto extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_kButton1ActionPerformed
+
+    private void tabelaPRODUTOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaPRODUTOMouseClicked
+        // TODO add your handling code here:
+        String nome_produto = "'" +tabelaPRODUTO.getValueAt(tabelaPRODUTO.getSelectedRow(), 1);
+        connex.conexao();
+        
+        connex.executaSql("SELECT * from produto where nome='"+nome_produto+"'");
+        try{
+        connex.rs.first();
+        descricaoProduto.setText(connex.rs.getString("descricao"));
+        custoProduto.setText(String.valueOf(connex.rs.getLong("custo_producao")));
+        codigoProdutos.setText(String.valueOf(connex.rs.getInt("codigo")));
+        } catch(SQLException ex) {
+        JOptionPane.showMessageDialog(null, "dsbducuy" +ex);
+    }
+       botaoEDITAR.setEnabled(true);
+       botaoEXCLUIR.setEnabled(true);
+    }//GEN-LAST:event_tabelaPRODUTOMouseClicked
 
     /**
      * @param args the command line arguments
