@@ -38,16 +38,15 @@ public class caixa_diario {
         }
             connex.desconecta();
     }
- public modeloCaixa_diario buscaCaixa_diario (modeloCaixa_diario moCaixa_diario){
+ public modeloCaixa_diario buscaCaixa_diario (modeloCaixa_diario modCaixa_diario){
     
         connex.conexao();
         
-        connex.executaSql("SELECT * FROM caixa_diario WHERE data = '"+moCaixa_diario.getPesquisa()+"'");
+        connex.executaSql("SELECT * FROM caixa_diario WHERE data = '"+modCaixa_diario.getPesquisa()+"'");
         try{
             connex.rs.first();
             modCaixadiCaixa_diario.setData(connex.rs.getString("data"));
             modCaixadiCaixa_diario.setValor(Float.parseFloat(connex.rs.getString("valor")));
-            modCaixadiCaixa_diario.setCod_padaria(connex.rs.getInt("cod_padaria"));
         }
         catch(SQLException ex) {
             JOptionPane.showMessageDialog(null, "Cliente não cadastrado" + ex);

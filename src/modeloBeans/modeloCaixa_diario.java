@@ -11,6 +11,7 @@ package modeloBeans;
  */
 public class modeloCaixa_diario {
 
+
     /**
      * @return the pesquisa
      */
@@ -56,18 +57,8 @@ public class modeloCaixa_diario {
     /**
      * @return the cod_padaria
      */
-    public int getCod_padaria() {
-        return cod_padaria;
-    }
-
-    /**
-     * @param cod_padaria the cod_padaria to set
-     */
-    public void setCod_padaria(int cod_padaria) {
-        this.cod_padaria = cod_padaria;
-    }
+    
     private String data;
     private float valor;
-    private int cod_padaria;
     private String pesquisa;
 }

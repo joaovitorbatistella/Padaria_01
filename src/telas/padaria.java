@@ -64,7 +64,7 @@ public class padaria extends javax.swing.JFrame {
         botaoCANCELAR = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -85,6 +85,14 @@ public class padaria extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("CÓDIGO");
+
+        emailPADARIA.setEnabled(false);
+
+        enderecoPADARIA.setEnabled(false);
+
+        telefonePADARIA.setEnabled(false);
+
+        cnpjPADARIA.setEnabled(false);
 
         codigoPADARIA.setEnabled(false);
 
@@ -107,10 +115,16 @@ public class padaria extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabelaPadaria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaPadariaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelaPadaria);
 
         botaoINSERIR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoINSERIR.setText("INSERIR");
+        botaoINSERIR.setEnabled(false);
         botaoINSERIR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoINSERIRActionPerformed(evt);
@@ -127,12 +141,20 @@ public class padaria extends javax.swing.JFrame {
 
         botaoEDITAR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoEDITAR.setText("EDITAR");
+        botaoEDITAR.setEnabled(false);
 
         botaoEXCLUIR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoEXCLUIR.setText("EXCLUIR");
+        botaoEXCLUIR.setEnabled(false);
+        botaoEXCLUIR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEXCLUIRActionPerformed(evt);
+            }
+        });
 
         botaoCANCELAR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoCANCELAR.setText("CANCELAR");
+        botaoCANCELAR.setEnabled(false);
 
         jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Desktop\\icone_prrincipal.png")); // NOI18N
 
@@ -142,35 +164,34 @@ public class padaria extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6))
-                                .addComponent(jLabel5))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cnpjPADARIA, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
-                                .addComponent(telefonePADARIA, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(codigoPADARIA, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(13, 13, 13))))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(emailPADARIA, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
-                                .addComponent(enderecoPADARIA)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(132, 132, 132)
-                            .addComponent(botaoINSERIR)))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel6))
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cnpjPADARIA, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                                    .addComponent(telefonePADARIA, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(codigoPADARIA, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(13, 13, 13))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(emailPADARIA, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                                    .addComponent(enderecoPADARIA)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(132, 132, 132)
+                                .addComponent(botaoINSERIR))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(136, 136, 136)
                         .addComponent(jLabel1)))
@@ -255,7 +276,8 @@ public class padaria extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(984, 565));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoINSERIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoINSERIRActionPerformed
@@ -274,6 +296,7 @@ public class padaria extends javax.swing.JFrame {
         enderecoPADARIA.setEnabled(false);
         telefonePADARIA.setEnabled(false);
         cnpjPADARIA.setEnabled(false);
+        preencherTabela("select * from padaria order by codigo");
         
     }//GEN-LAST:event_botaoINSERIRActionPerformed
 
@@ -284,6 +307,9 @@ public class padaria extends javax.swing.JFrame {
         telefonePADARIA.setEnabled(true);
         cnpjPADARIA.setEnabled(true);
         botaoINSERIR.setEnabled(true);
+        botaoCANCELAR.setEnabled(true);
+        botaoEDITAR.setEnabled(true);
+        botaoEXCLUIR.setEnabled(true);
     }//GEN-LAST:event_boatoNOVOActionPerformed
 
     private void buscarPADARIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPADARIAActionPerformed
@@ -299,19 +325,37 @@ public class padaria extends javax.swing.JFrame {
         botaoEXCLUIR.setEnabled(true);
     }//GEN-LAST:event_buscarPADARIAActionPerformed
 
+    private void tabelaPadariaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaPadariaMouseClicked
+        // TODO add your handling code here:
+          int indice = tabelaPadaria.getSelectedRow();
+        emailPADARIA.setText(tabelaPadaria.getValueAt(indice, 1).toString());
+        enderecoPADARIA.setText(tabelaPadaria.getValueAt(indice, 3).toString());
+        telefonePADARIA.setText(tabelaPadaria.getValueAt(indice, 2).toString());
+        cnpjPADARIA.setText(tabelaPadaria.getValueAt(indice, 4).toString());
+        codigoPADARIA.setText(tabelaPadaria.getValueAt(indice, 0).toString());
+        
+        
+        botaoEDITAR.setEnabled(true);
+        botaoEXCLUIR.setEnabled(true);
+    }//GEN-LAST:event_tabelaPadariaMouseClicked
+
+    private void botaoEXCLUIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEXCLUIRActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoEXCLUIRActionPerformed
+
     /**
      * @param Sql
      */
     public void preencherTabela(String Sql){
         ArrayList dados = new ArrayList();
-        String[] colunas = new String[]{"codigo","email","telefone","cnpj"};
+        String[] colunas = new String[]{"codigo","email","telefone", "endereco", "cnpj"};
         connex.conexao();
         
         connex.executaSql(Sql);
          try {
             connex.rs.first();
             do {
-                dados.add(new Object[]{connex.rs.getInt("codigo"), connex.rs.getString("email"), connex.rs.getLong("telefone"), connex.rs.getLong("cnpj")});
+                dados.add(new Object[]{connex.rs.getInt("codigo"), connex.rs.getString("email"), connex.rs.getLong("telefone"), connex.rs.getString("endereco") ,connex.rs.getLong("cnpj")});
             } while (connex.rs.next());
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(rootPane, "Busque outro produto na tabela" +ex);
@@ -328,6 +372,8 @@ public class padaria extends javax.swing.JFrame {
         tabelaPadaria.getColumnModel().getColumn(2).setResizable(false);
         tabelaPadaria.getColumnModel().getColumn(3).setPreferredWidth(140);
         tabelaPadaria.getColumnModel().getColumn(3).setResizable(false);
+        tabelaPadaria.getColumnModel().getColumn(4).setPreferredWidth(140);
+        tabelaPadaria.getColumnModel().getColumn(4).setResizable(false);
 
         tabelaPadaria.setAutoResizeMode(tabelaPadaria.AUTO_RESIZE_OFF);
         tabelaPadaria.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

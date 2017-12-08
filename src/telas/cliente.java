@@ -298,8 +298,8 @@ public class cliente extends javax.swing.JFrame {
                             .addComponent(botaoInserir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pesquisaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pesquisaCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -408,60 +408,54 @@ public class cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_pesquisaClienteActionPerformed
 
     private void tabelaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClienteMouseClicked
-        // TODO add your handling code here:
-        String nome_cliente = "'" +tabelaCliente.getValueAt(tabelaCliente.getSelectedRow(), 1);
-        connex.conexao();
+
+        int indice = tabelaCliente.getSelectedRow();
+        nomeCliente.setText(tabelaCliente.getValueAt(indice, 1).toString());
+        cpfCliente.setText(tabelaCliente.getValueAt(indice, 2).toString());
+        enderecoCliente.setText(tabelaCliente.getValueAt(indice, 3).toString());
+        telefoneCliente.setText(tabelaCliente.getValueAt(indice, 4).toString());
+        inadinplenciaCliente.setText(tabelaCliente.getValueAt(indice, 5).toString());
+        codigoCliente.setText(tabelaCliente.getValueAt(indice, 0).toString());        
         
-        connex.executaSql("SELECT * from cliente where nome='"+nome_cliente+"'");
-        try {
-            connex.rs.first();
-            codigoCliente.setText(String.valueOf(connex.rs.getInt("codigo")));
-            nomeCliente.setText(connex.rs.getString("nome"));
-            cpfCliente.setText(String.valueOf(connex.rs.getLong("cpf")));
-            enderecoCliente.setText(connex.rs.getString("endereco"));
-            inadinplenciaCliente.setText(connex.rs.getString("inadimplencia"));
-            telefoneCliente.setText(String.valueOf(connex.rs.getLong("telefone")));
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao selecionar os dados" +ex);
-        }
-        connex.desconecta();
         botaoEditar.setEnabled(true);
         botaoExcluir.setEnabled(true);
+        
     }//GEN-LAST:event_tabelaClienteMouseClicked
 
     /**
-     * @param args the command line arguments
+     * @param Sql
      */
     public void preencherTabela(String Sql){
         ArrayList dados = new ArrayList();
-        String[] colunas = new String[]{"nome","cpf","endereco","telefone","inadimplencia", "codigo"};
+        String[] colunas = new String[]{"codigo", "nome", "cpf", "endereco", "telefone", "inadinplencia"};
         connex.conexao();
         
         connex.executaSql(Sql);
          try {
             connex.rs.first();
             do {
-                dados.add(new Object[]{connex.rs.getString("nome"), connex.rs.getString("cpf"), connex.rs.getString("endereco"), connex.rs.getLong("telefone"), connex.rs.getString("inadimplencia"), connex.rs.getInt("codigo")});
+                dados.add(new Object[]{connex.rs.getInt("codigo"), connex.rs.getString("nome"), connex.rs.getLong("cpf"), connex.rs.getString("endereco"), connex.rs.getLong("telefone"), connex.rs.getString("inadimplencia")});
             } while (connex.rs.next());
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(rootPane, "Busque outro produto na tabela");
+            JOptionPane.showMessageDialog(rootPane, "Busque outro produto na tabela" + ex);
             
         }
         ModeloTabela modelo = new ModeloTabela(dados, colunas);
 
         tabelaCliente.setModel(modelo);
-        tabelaCliente.getColumnModel().getColumn(0).setPreferredWidth(140);
+        tabelaCliente.getColumnModel().getColumn(0).setPreferredWidth(70);
         tabelaCliente.getColumnModel().getColumn(0).setResizable(false);
         tabelaCliente.getColumnModel().getColumn(1).setPreferredWidth(140);
         tabelaCliente.getColumnModel().getColumn(1).setResizable(false);
         tabelaCliente.getColumnModel().getColumn(2).setPreferredWidth(140);
         tabelaCliente.getColumnModel().getColumn(2).setResizable(false);
-        tabelaCliente.getColumnModel().getColumn(3).setPreferredWidth(130);
+        tabelaCliente.getColumnModel().getColumn(3).setPreferredWidth(140);
         tabelaCliente.getColumnModel().getColumn(3).setResizable(false);
-        tabelaCliente.getColumnModel().getColumn(4).setPreferredWidth(130);
+        tabelaCliente.getColumnModel().getColumn(4).setPreferredWidth(140);
         tabelaCliente.getColumnModel().getColumn(4).setResizable(false);
-        tabelaCliente.getColumnModel().getColumn(5).setPreferredWidth(70);
+        tabelaCliente.getColumnModel().getColumn(5).setPreferredWidth(120);
         tabelaCliente.getColumnModel().getColumn(5).setResizable(false);
+        
 
         tabelaCliente.setAutoResizeMode(tabelaCliente.AUTO_RESIZE_OFF);
         tabelaCliente.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
