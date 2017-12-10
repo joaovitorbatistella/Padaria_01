@@ -22,6 +22,7 @@ public class compra extends javax.swing.JFrame {
     ConexaoSQL connex = new ConexaoSQL();
     modeloCompra modCompra = new modeloCompra();
     compraDao daoCompra = new compraDao();
+    int flag=0;
 
     /**
      * Creates new form compra
@@ -291,6 +292,10 @@ public class compra extends javax.swing.JFrame {
 
     private void botaoEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEditarActionPerformed
         // TODO add your handling code here:
+        flag=2;
+        dataCompra.setEnabled(true);
+        valor_totalCompra.setEnabled(true);
+        botaoInserir.setEnabled(true);
     }//GEN-LAST:event_botaoEditarActionPerformed
 
     private void valor_totalCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valor_totalCompraActionPerformed
@@ -299,6 +304,7 @@ public class compra extends javax.swing.JFrame {
 
     private void botaoInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInserirActionPerformed
         // TODO add your handling code here:
+        if(flag == 1){
         modCompra.setData(dataCompra.getText());
         modCompra.setValor_total(Float.parseFloat(valor_totalCompra.getText()));
         daoCompra.Salvar(modCompra);
@@ -308,6 +314,14 @@ public class compra extends javax.swing.JFrame {
         botaoInserir.setEnabled(false);
         dataCompra.setEnabled(false);
         valor_totalCompra.setEnabled(false);
+        }else{
+            modCompra.setData(dataCompra.getText());
+            modCompra.setValor_total(Float.parseFloat(valor_totalCompra.getText()));
+            daoCompra.editarCliente(modCompra);
+            botaoInserir.setEnabled(false);
+            dataCompra.setEnabled(false);
+            valor_totalCompra.setEnabled(false);
+        }
     }//GEN-LAST:event_botaoInserirActionPerformed
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed

@@ -27,6 +27,7 @@ public class pagamento extends javax.swing.JFrame {
     modeloPagamento modPagamento = new modeloPagamento();
     pagamentoDao daoPagamento = new pagamentoDao();
     modeloVenda modVenda = new modeloVenda();
+    int flag=0;
 
     /**
      * Creates new form pagamento
@@ -107,6 +108,11 @@ public class pagamento extends javax.swing.JFrame {
 
         botaoExcluir.setText("Excluir");
         botaoExcluir.setEnabled(false);
+        botaoExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoExcluirActionPerformed(evt);
+            }
+        });
 
         botaoEditar.setText("Editar");
         botaoEditar.setEnabled(false);
@@ -336,9 +342,10 @@ public class pagamento extends javax.swing.JFrame {
 
     private void botaoInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInserirActionPerformed
         // TODO add your handling code here:
+        if(flag==1){
         modPagamento.setData_pagamento(dataPagamento.getText());
         modPagamento.setData_vencimento(dataVencimento.getText());
-        modPagamento.setValor(String.valueOf(valorPAGAMENTO.getText()));
+        modPagamento.setValor(Float.parseFloat(valorPAGAMENTO.getText()));
         modPagamento.setCod_venda(Integer.parseInt(codVENDAPAGAMENTO.getText()));
         daoPagamento.Salvar(modPagamento);
         dataPagamento.setText("");
@@ -350,6 +357,19 @@ public class pagamento extends javax.swing.JFrame {
         dataPagamento.setEnabled(false);
         dataVencimento.setEnabled(false);
         valorPAGAMENTO.setEnabled(false);
+        } else{
+            modPagamento.setData_pagamento(dataPagamento.getText());
+            modPagamento.setData_vencimento(dataVencimento.getText());
+            modPagamento.setValor(Float.parseFloat(valorPAGAMENTO.getText()));
+            modPagamento.setCod_venda(Integer.parseInt(codVENDAPAGAMENTO.getText()));
+            daoPagamento.editarPagamento(modPagamento);
+            botaoInserir.setEnabled(false);
+            dataPagamento.setEnabled(false);
+            dataVencimento.setEnabled(false);
+            valorPAGAMENTO.setEnabled(false);
+            codPAGAMENTo.setEnabled(false);
+            codVENDAPAGAMENTO.setEnabled(false);
+        }
     }//GEN-LAST:event_botaoInserirActionPerformed
 
     private void dataVencimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataVencimentoActionPerformed
@@ -358,12 +378,13 @@ public class pagamento extends javax.swing.JFrame {
 
     private void botaoEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEditarActionPerformed
         // TODO add your handling code here:
+        flag=2;
         dataPagamento.setEnabled(true);
         dataVencimento.setEnabled(true);
+        codPAGAMENTo.setEnabled(true);
+        codVENDAPAGAMENTO.setEnabled(true);
         valorPAGAMENTO.setEnabled(true);
-        botaoEditar.setEnabled(false);
-        botaoNovo.setEnabled(false);
-        botaoExcluir.setEnabled(false);
+        botaoInserir.setEnabled(true);
     }//GEN-LAST:event_botaoEditarActionPerformed
 
     private void botaoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoActionPerformed
@@ -415,6 +436,16 @@ public class pagamento extends javax.swing.JFrame {
         botaoEditar.setEnabled(true);
         botaoExcluir.setEnabled(true);
     }//GEN-LAST:event_tabelaVENDAPAGAMENTOMouseClicked
+
+    private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
+        // TODO add your handling code here:
+        int resposta =0;
+        resposta = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir?");
+        if (resposta == JOptionPane.YES_OPTION){
+            modPagamento.setCod_pagamento(Integer.parseInt(codPAGAMENTo.getText()));
+            daoPagamento.excluirPagamento(modPagamento);
+        }
+    }//GEN-LAST:event_botaoExcluirActionPerformed
 
     /**
      * @param args the command line arguments

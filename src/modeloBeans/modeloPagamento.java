@@ -12,16 +12,30 @@ package modeloBeans;
 public class modeloPagamento {
 
     /**
+     * @return the cod_pagamento
+     */
+    public int getCod_pagamento() {
+        return cod_pagamento;
+    }
+
+    /**
+     * @param cod_pagamento the cod_pagamento to set
+     */
+    public void setCod_pagamento(int cod_pagamento) {
+        this.cod_pagamento = cod_pagamento;
+    }
+
+    /**
      * @return the valor
      */
-    public String getValor() {
+    public float getValor() {
         return valor;
     }
 
     /**
      * @param valor the valor to set
      */
-    public void setValor(String valor) {
+    public void setValor(float valor) {
         this.valor = valor;
     }
 
@@ -66,11 +80,12 @@ public class modeloPagamento {
     public void setCod_venda(int cod_venda) {
         this.cod_venda = cod_venda;
     }
-    private String valor;
+    private float valor;
     private String data_pagamento;
     private String data_vencimento;
     private int cod_venda;
     private String pesquisa;
+    private int cod_pagamento;
     
     public String getPesquisa() {
         return pesquisa;

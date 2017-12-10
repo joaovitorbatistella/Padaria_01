@@ -18,7 +18,7 @@ public class ConexaoSQL {
     public Statement stm;
     public ResultSet rs;
     private final String driver = "org.postgresql.Driver";
-    private final String caminho = "jdbc:postgresql://localhost/Padaria_12";
+    private final String caminho = "jdbc:postgresql://localhost/Padaria_13";
     private final String usuario = "postgres";
     private final String senha = "postgres";
     public Connection con;

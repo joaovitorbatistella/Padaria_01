@@ -69,7 +69,7 @@
                                   <Component id="botaoEXCLUIR" min="-2" pref="111" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="botaoNovo2" min="-2" pref="111" max="-2" attributes="0"/>
+                                  <Component id="botaoNovo" min="-2" pref="111" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="botaoCancelar2" min="-2" pref="111" max="-2" attributes="0"/>
                               </Group>
@@ -162,7 +162,7 @@
                               <Component id="jLabel4" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
                               <Component id="codclienteVENDA" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="botaoInserir1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="botaoNovo2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="botaoNovo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="botaoCancelar2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -252,7 +252,6 @@
                     <Column editable="true" title="Title 4" type="java.lang.Object"/>
                   </Table>
                 </Property>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabelaVENDAMouseClicked"/>
@@ -269,12 +268,12 @@
             <Property name="text" type="java.lang.String" value="BUSCAR"/>
           </Properties>
         </Component>
-        <Component class="br.com.cyber.componente.KButton" name="botaoNovo2">
+        <Component class="br.com.cyber.componente.KButton" name="botaoNovo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Novo"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoNovo2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoNovoActionPerformed"/>
           </Events>
         </Component>
         <Component class="br.com.cyber.componente.KButton" name="botaoCancelar2">

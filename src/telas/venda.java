@@ -23,7 +23,7 @@ public class venda extends javax.swing.JFrame {
     modeloVenda modVenda = new modeloVenda();
     vendaDao daoVenda = new vendaDao();
     modeloCliente modCliente = new modeloCliente();
-
+    int flag=0;
     /**
      * Creates new form venda
      */
@@ -55,7 +55,7 @@ public class venda extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaVENDA = new br.com.cyber.componente.Ktable();
         kButton1 = new br.com.cyber.componente.KButton();
-        botaoNovo2 = new br.com.cyber.componente.KButton();
+        botaoNovo = new br.com.cyber.componente.KButton();
         botaoCancelar2 = new br.com.cyber.componente.KButton();
         botaoeditar = new br.com.cyber.componente.KButton();
         botaoEXCLUIR = new br.com.cyber.componente.KButton();
@@ -114,7 +114,6 @@ public class venda extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tabelaVENDA.setEnabled(false);
         tabelaVENDA.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabelaVENDAMouseClicked(evt);
@@ -128,10 +127,10 @@ public class venda extends javax.swing.JFrame {
         kButton1.setBackground(new java.awt.Color(0, 255, 0));
         kButton1.setText("BUSCAR");
 
-        botaoNovo2.setText("Novo");
-        botaoNovo2.addActionListener(new java.awt.event.ActionListener() {
+        botaoNovo.setText("Novo");
+        botaoNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoNovo2ActionPerformed(evt);
+                botaoNovoActionPerformed(evt);
             }
         });
 
@@ -220,7 +219,7 @@ public class venda extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(botaoEXCLUIR, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(botaoNovo2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(botaoNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(botaoCancelar2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(258, 258, 258))
@@ -292,7 +291,7 @@ public class venda extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(codclienteVENDA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botaoInserir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botaoNovo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botaoNovo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botaoCancelar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -326,6 +325,7 @@ public class venda extends javax.swing.JFrame {
 
     private void botaoInserir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInserir1ActionPerformed
         // TODO add your handling code here:
+        if(flag==1){
         modVenda.setData(dataVENDA.getText());
         modVenda.setValor_total(String.valueOf(valorVENDA.getText()));
         modVenda.setCod_cliente(Integer.parseInt(codclienteVENDA.getText()));
@@ -339,6 +339,16 @@ public class venda extends javax.swing.JFrame {
         valorVENDA.setEnabled(false);
         numeroVENDA.setEnabled(false);
         codclienteVENDA.setEnabled(false);
+        }else{
+            modVenda.setData(dataVENDA.getText());
+            modVenda.setValor_total(valorVENDA.getText());
+            modVenda.setCod_cliente(Integer.parseInt(codclienteVENDA.getText()));
+            daoVenda.editarVenda(modVenda);
+            botaoInserir.setEnabled(false);
+            dataVENDA.setEnabled(false);
+            valorVENDA.setEnabled(false);
+            codclienteVENDA.setEnabled(false);
+        }
 
     }//GEN-LAST:event_botaoInserir1ActionPerformed
 
@@ -355,13 +365,20 @@ public class venda extends javax.swing.JFrame {
 
     private void botaoeditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoeditarActionPerformed
         // TODO add your handling code here:
+        flag=2;
+        tabelaCLIENTEVENDA.setEnabled(true);
+        tabelaVENDA.setEnabled(true);
+        dataVENDA.setEnabled(true);
+        valorVENDA.setEnabled(true);
+        codclienteVENDA.setEnabled(true);
+        botaoInserir1.setEnabled(true);
     }//GEN-LAST:event_botaoeditarActionPerformed
 
     private void botaoCancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelar2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoCancelar2ActionPerformed
 
-    private void botaoNovo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovo2ActionPerformed
+    private void botaoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoActionPerformed
         // TODO add your handling code here:
 
         botaoInserir1.setEnabled(true);
@@ -370,7 +387,7 @@ public class venda extends javax.swing.JFrame {
         codclienteVENDA.setEnabled(true);
         tabelaCLIENTEVENDA.setEnabled(true);
         tabelaVENDA.setEnabled(true);
-    }//GEN-LAST:event_botaoNovo2ActionPerformed
+    }//GEN-LAST:event_botaoNovoActionPerformed
 
     private void tabelaVENDAMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaVENDAMouseEntered
         // TODO add your handling code here:
@@ -494,7 +511,7 @@ public class venda extends javax.swing.JFrame {
     private br.com.cyber.componente.KButton botaoEXCLUIR;
     private br.com.cyber.componente.KButton botaoInserir;
     private br.com.cyber.componente.KButton botaoInserir1;
-    private br.com.cyber.componente.KButton botaoNovo2;
+    private br.com.cyber.componente.KButton botaoNovo;
     private br.com.cyber.componente.KButton botaoeditar;
     private javax.swing.JTextField codclienteVENDA;
     private javax.swing.JTextField dataVENDA;

@@ -53,7 +53,25 @@ public class vendaDao {
         connex.desconecta();
     }
 
-    
+    public void editarVenda (modeloVenda modVenda){
+        connex.conexao();
+        
+        try {
+            PreparedStatement pst = connex.con.prepareStatement("update venda set data=?, valor_total=?, cod_cliente=? where numero=?");
+            pst.setDate(1, Date.valueOf(modVenda.getData()));
+            pst.setFloat(2, Float.parseFloat((modVenda.getValor_total())));
+            pst.setInt(3, modVenda.getCod_cliente());
+            pst.setInt(4, modVenda.getNumero());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Dados alterado com sucesso");
+                    
+                    } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na alteração dos dados/nError: " +ex);
+        }
+        
+        
+        connex.desconecta();
+    }
     public modeloVenda buscaVenda (modeloVenda modVenda) throws ClassNotFoundException, SQLException {
     
         connex.conexao();

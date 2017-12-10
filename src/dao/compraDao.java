@@ -26,10 +26,9 @@ public class compraDao {
         connex.conexao();
         
         try {
-            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO compra (data, valor_total, numero) VALUES (?, ?, ?)");
+            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO compra (data, valor_total) VALUES (?, ?)");
             pst.setDate(1, Date.valueOf(modCompra.getData()));
             pst.setFloat(2, modCompra.getValor_total());
-            pst.setInt(3, modCompra.getNumero());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso!");
         } catch (SQLException ex) {
@@ -51,7 +50,24 @@ public class compraDao {
         
         connex.desconecta();
     }
-    
+    public void editarCliente (modeloCompra modCompra){
+        connex.conexao();
+        
+        try {
+            PreparedStatement pst = connex.con.prepareStatement("update compra set data=?, valor_total=? where numero=?");
+            pst.setDate(1, Date.valueOf(modCompra.getData()));// primeiro parâmetro indica a ? correspondente, segundo parâmetro a variável que substituirá a ?
+            pst.setFloat(2, modCompra.getValor_total()); //exemplo de hora
+            pst.setInt(3, modCompra.getNumero()); //exemplo de data
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Dados alterado com sucesso");
+                    
+                    } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na alteração dos dados/nError: " +ex);
+        }
+        
+        
+        connex.desconecta();
+    }
     public modeloCompra buscaCompra (modeloCompra modCompra){
     
         connex.conexao();
