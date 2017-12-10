@@ -6,7 +6,11 @@
 package telas;
 
 import dao.usuarios;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import modeloBeans.ModeloTabela;
 import modeloBeans.modeloUsuarios;
 import persistencia.ConexaoSQL;
 
@@ -25,6 +29,7 @@ public class usuario extends javax.swing.JFrame {
     public usuario() {
         initComponents();
         connex.conexao();
+        preencherTabela("Select * from usuarios order by usu_cod");
     }
 
     /**
@@ -92,7 +97,18 @@ public class usuario extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TabelaUsuários.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabelaUsuáriosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TabelaUsuários);
+
+        pesquisarUSUARIO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisarUSUARIOActionPerformed(evt);
+            }
+        });
 
         kButton1.setBackground(new java.awt.Color(0, 255, 0));
         kButton1.setText("Buscar");
@@ -121,6 +137,11 @@ public class usuario extends javax.swing.JFrame {
         botaoCANCELAR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoCANCELAR.setText("CANCELAR");
         botaoCANCELAR.setEnabled(false);
+        botaoCANCELAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCANCELARActionPerformed(evt);
+            }
+        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Desktop\\icone_prrincipal.png")); // NOI18N
 
@@ -134,46 +155,49 @@ public class usuario extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel1)
-                .addGap(302, 302, 302)
-                .addComponent(pesquisarUSUARIO, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nomeUSUARIO, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4)
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nomeUSUARIO, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(codigoUSUARIOS, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(46, 46, 46)
+                                .addComponent(botaoINSERIR))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(senhaUSUARIO)))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jLabel1)
+                        .addGap(220, 220, 220)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(codigoUSUARIOS, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(botaoINSERIR))
+                        .addGap(9, 9, 9)
+                        .addComponent(pesquisarUSUARIO, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(senhaUSUARIO, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addGap(9, 9, 9)
                         .addComponent(jButton2)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botaoCANCELAR)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botaoEDITAR)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botaoEXCLUIR)
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botaoEXCLUIR)))
+                .addGap(68, 68, 68))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,7 +247,7 @@ public class usuario extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(940, 469));
+        setSize(new java.awt.Dimension(908, 469));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -257,10 +281,58 @@ public class usuario extends javax.swing.JFrame {
         botaoEXCLUIR.setEnabled(true);
     }//GEN-LAST:event_kButton1ActionPerformed
 
+    private void TabelaUsuáriosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaUsuáriosMouseClicked
+        // TODO add your handling code here:
+        int indice = TabelaUsuários.getSelectedRow();
+        codigoUSUARIOS.setText(TabelaUsuários.getValueAt(indice, 0).toString());
+        nomeUSUARIO.setText(TabelaUsuários.getValueAt(indice, 1).toString());
+        senhaUSUARIO.setText(TabelaUsuários.getValueAt(indice, 2).toString());
+        
+        
+        botaoEDITAR.setEnabled(true);
+        botaoEXCLUIR.setEnabled(true);
+    }//GEN-LAST:event_TabelaUsuáriosMouseClicked
+
+    private void botaoCANCELARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCANCELARActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoCANCELARActionPerformed
+
+    private void pesquisarUSUARIOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarUSUARIOActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pesquisarUSUARIOActionPerformed
+
     /**
      * @param args
      */
-    
+    public void preencherTabela(String Sql){
+        ArrayList dados = new ArrayList();
+        String[] colunas = new String[]{"usu_cod","usu_nome","usu_senha"};
+        connex.conexao();
+        
+        connex.executaSql(Sql);
+         try {
+            connex.rs.first();
+            do {
+                dados.add(new Object[]{connex.rs.getInt("usu_cod"), connex.rs.getString("usu_nome"), connex.rs.getString("usu_senha")});
+            } while (connex.rs.next());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Busque outro produto na tabela");
+            
+        }
+        ModeloTabela modelo = new ModeloTabela(dados, colunas);
+
+        TabelaUsuários.setModel(modelo);
+        TabelaUsuários.getColumnModel().getColumn(0).setPreferredWidth(90);
+        TabelaUsuários.getColumnModel().getColumn(0).setResizable(false);
+        TabelaUsuários.getColumnModel().getColumn(1).setPreferredWidth(145);
+        TabelaUsuários.getColumnModel().getColumn(1).setResizable(false);
+        TabelaUsuários.getColumnModel().getColumn(2).setPreferredWidth(150);
+        TabelaUsuários.getColumnModel().getColumn(2).setResizable(false);
+
+        TabelaUsuários.setAutoResizeMode(TabelaUsuários.AUTO_RESIZE_OFF);
+        TabelaUsuários.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        connex.desconecta();
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

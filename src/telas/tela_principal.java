@@ -55,7 +55,7 @@ public class tela_principal extends javax.swing.JFrame {
 
         func3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         func3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/shoppaymentorderbuy-29_icon-icons.com_73875.png"))); // NOI18N
-        func3.setToolTipText("Funcionários");
+        func3.setToolTipText("Venda");
         func3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 func3ActionPerformed(evt);
@@ -66,7 +66,7 @@ public class tela_principal extends javax.swing.JFrame {
 
         func2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         func2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cash-money_icon-icons.com_74204.png"))); // NOI18N
-        func2.setToolTipText("Funcionários");
+        func2.setToolTipText("Pagamento");
         func2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 func2ActionPerformed(evt);
@@ -77,8 +77,7 @@ public class tela_principal extends javax.swing.JFrame {
 
         func1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         func1.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Desktop\\shoppingcart_compra_13339.png")); // NOI18N
-        func1.setText("Compra");
-        func1.setToolTipText("Funcionários");
+        func1.setToolTipText("Compra");
         func1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 func1ActionPerformed(evt);
@@ -115,7 +114,7 @@ public class tela_principal extends javax.swing.JFrame {
 
         func6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         func6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cashier_icon-icons.com_53629.png"))); // NOI18N
-        func6.setToolTipText("Funcionários");
+        func6.setToolTipText("Caixa Diário");
         func6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 func6ActionPerformed(evt);
@@ -174,6 +173,11 @@ public class tela_principal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Sair");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
         jMenu2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu2ActionPerformed(evt);
@@ -244,6 +248,11 @@ public class tela_principal extends javax.swing.JFrame {
         padaria padaria = new padaria();
         padaria.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jMenu2MouseClicked
 
     /**
      * @param args the command line arguments

@@ -11,6 +11,20 @@ package modeloBeans;
  */
 public class modeloCaixa_diario {
 
+    /**
+     * @return the data_caixa
+     */
+    public String getData_caixa() {
+        return data_caixa;
+    }
+
+    /**
+     * @param data_caixa the data_caixa to set
+     */
+    public void setData_caixa(String data_caixa) {
+        this.data_caixa = data_caixa;
+    }
+
 
     /**
      * @return the pesquisa
@@ -26,19 +40,6 @@ public class modeloCaixa_diario {
         this.pesquisa = pesquisa;
     }
 
-    /**
-     * @return the data
-     */
-    public String getData() {
-        return data;
-    }
-
-    /**
-     * @param data the data to set
-     */
-    public void setData(String data) {
-        this.data = data;
-    }
 
     /**
      * @return the valor
@@ -58,7 +59,7 @@ public class modeloCaixa_diario {
      * @return the cod_padaria
      */
     
-    private String data;
     private float valor;
     private String pesquisa;
+    private String data_caixa;
 }

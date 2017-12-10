@@ -53,7 +53,6 @@ public class funcionario extends javax.swing.JFrame {
         cpfFUNCIONARIO = new javax.swing.JTextField();
         codFUNCIONARIO = new javax.swing.JTextField();
         botaoINSERIR = new javax.swing.JButton();
-        pesquisarFUNCIONARIO = new javax.swing.JTextField();
         botaoBuscar = new br.com.cyber.componente.KButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaFuncionario = new br.com.cyber.componente.Ktable();
@@ -62,6 +61,7 @@ public class funcionario extends javax.swing.JFrame {
         botaoEDITAR = new javax.swing.JButton();
         botaoEXCLUIR = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        pesquiseCLIENTE = new br.com.cyber.componente.KTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -142,6 +142,11 @@ public class funcionario extends javax.swing.JFrame {
         botaoCANCELAR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoCANCELAR.setText("CANCELAR");
         botaoCANCELAR.setEnabled(false);
+        botaoCANCELAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCANCELARActionPerformed(evt);
+            }
+        });
 
         botaoEDITAR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoEDITAR.setText("EDITAR");
@@ -153,15 +158,14 @@ public class funcionario extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Desktop\\icone_prrincipal.png")); // NOI18N
 
+        pesquiseCLIENTE.setK_placeholder_text("Pesquise funcionário por nome");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,10 +193,10 @@ public class funcionario extends javax.swing.JFrame {
                                 .addGap(59, 59, 59)
                                 .addComponent(botaoINSERIR)))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(pesquisarFUNCIONARIO, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(pesquiseCLIENTE, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(botaoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
@@ -203,8 +207,11 @@ public class funcionario extends javax.swing.JFrame {
                                 .addComponent(botaoEDITAR)
                                 .addGap(18, 18, 18)
                                 .addComponent(botaoEXCLUIR))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(20, 20, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 691, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,7 +225,7 @@ public class funcionario extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(botaoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pesquisarFUNCIONARIO, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pesquiseCLIENTE, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -283,6 +290,7 @@ public class funcionario extends javax.swing.JFrame {
         enderecoFUNCIONARIO.setText("");
         nomeFUNCIONARIO.setText("");
         cpfFUNCIONARIO.setText("");
+        codFUNCIONARIO.setText("");
         botaoINSERIR.setEnabled(false);
         telefoneFUNCIONARIO.setEnabled(false);
         enderecoFUNCIONARIO.setEnabled(false);
@@ -311,10 +319,12 @@ public class funcionario extends javax.swing.JFrame {
         enderecoFUNCIONARIO.setEnabled(true);
         nomeFUNCIONARIO.setEnabled(true);
         cpfFUNCIONARIO.setEnabled(true);
+        botaoCANCELAR.setEnabled(true);
         telefoneFUNCIONARIO.setText("");
         enderecoFUNCIONARIO.setText("");
         nomeFUNCIONARIO.setText("");
         cpfFUNCIONARIO.setText("");
+        codFUNCIONARIO.setText("");
     }//GEN-LAST:event_botaoNOVOActionPerformed
 
     private void tabelaFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaFuncionarioMouseClicked
@@ -326,6 +336,20 @@ public class funcionario extends javax.swing.JFrame {
         cpfFUNCIONARIO.setText(tabelaFuncionario.getValueAt(indice, 2).toString());
         codFUNCIONARIO.setText(tabelaFuncionario.getValueAt(indice, 0).toString());
     }//GEN-LAST:event_tabelaFuncionarioMouseClicked
+
+    private void botaoCANCELARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCANCELARActionPerformed
+        // TODO add your handling code here:
+        botaoINSERIR.setEnabled(false);
+        telefoneFUNCIONARIO.setEnabled(false);
+        enderecoFUNCIONARIO.setEnabled(false);
+        nomeFUNCIONARIO.setEnabled(false);
+        cpfFUNCIONARIO.setEnabled(false);
+        telefoneFUNCIONARIO.setText("");
+        enderecoFUNCIONARIO.setText("");
+        nomeFUNCIONARIO.setText("");
+        cpfFUNCIONARIO.setText("");
+        codFUNCIONARIO.setText("");
+    }//GEN-LAST:event_botaoCANCELARActionPerformed
 
     /**
      * @param args the command line arguments
@@ -416,7 +440,7 @@ public class funcionario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nomeFUNCIONARIO;
-    private javax.swing.JTextField pesquisarFUNCIONARIO;
+    private br.com.cyber.componente.KTextField pesquiseCLIENTE;
     private br.com.cyber.componente.Ktable tabelaFuncionario;
     private javax.swing.JTextField telefoneFUNCIONARIO;
     // End of variables declaration//GEN-END:variables

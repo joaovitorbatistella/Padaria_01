@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import modeloBeans.modeloVenda;
+import modeloBeans.modeloCliente;
 
 /**
  *
@@ -19,6 +20,7 @@ import modeloBeans.modeloVenda;
 public class vendaDao {
     ConexaoSQL connex = new ConexaoSQL();
     modeloVenda modVenda = new modeloVenda();
+    modeloCliente modCliente = new modeloCliente();
 
     public void Salvar(modeloVenda modVenda) {
         
@@ -27,13 +29,27 @@ public class vendaDao {
         try {
             PreparedStatement pst = connex.con.prepareStatement("INSERT INTO venda(data, valor_total, cod_cliente) VALUES (?, ?, ?)");
             pst.setDate(1, Date.valueOf(modVenda.getData()));
-            pst.setDouble(2, Double.parseDouble(modVenda.getValor_total()));
+            pst.setFloat(2, Float.parseFloat((modVenda.getValor_total())));
             pst.setInt(3, modVenda.getCod_cliente());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Erro ao inserir dados!/n ERROR: " +ex);
         }
+        connex.desconecta();
+    }
+    
+     public void excluirVenda (modeloVenda modVenda) {
+        connex.conexao();
+        
+        try {
+            PreparedStatement pst = connex.con.prepareStatement("delete from venda where numero =?");
+            pst.setInt(1, modVenda.getNumero());
+            pst.execute();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir dados" +ex);
+        }
+        
         connex.desconecta();
     }
 

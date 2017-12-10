@@ -29,7 +29,7 @@ public class CaicaDiario extends javax.swing.JFrame {
     public CaicaDiario() {
         initComponents();
         connex.conexao();
-        preencherTabela("SELECT * from caixa_diario order by data");
+        preencherTabela("SELECT * from caixa_diario order by data_caixa");
     }
 
     /**
@@ -47,7 +47,6 @@ public class CaicaDiario extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         valorCaixa = new javax.swing.JTextField();
         dataCaixa = new javax.swing.JTextField();
-        pesquisaCaixa = new javax.swing.JTextField();
         kButton1 = new br.com.cyber.componente.KButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaCaixa = new br.com.cyber.componente.Ktable();
@@ -57,6 +56,7 @@ public class CaicaDiario extends javax.swing.JFrame {
         botaoEDITAR = new javax.swing.JButton();
         botaoEXCLUIR = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        pesquiseCLIENTE = new br.com.cyber.componente.KTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -129,8 +129,15 @@ public class CaicaDiario extends javax.swing.JFrame {
         botaoEXCLUIR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoEXCLUIR.setText("EXCLUIR");
         botaoEXCLUIR.setEnabled(false);
+        botaoEXCLUIR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEXCLUIRActionPerformed(evt);
+            }
+        });
 
         jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Desktop\\icone_prrincipal.png")); // NOI18N
+
+        pesquiseCLIENTE.setK_placeholder_text("Pesquise por data");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -158,11 +165,11 @@ public class CaicaDiario extends javax.swing.JFrame {
                         .addComponent(jLabel5)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(pesquisaCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(pesquiseCLIENTE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -182,12 +189,15 @@ public class CaicaDiario extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(pesquisaCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pesquiseCLIENTE, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
@@ -243,7 +253,7 @@ public class CaicaDiario extends javax.swing.JFrame {
 
     private void botaoINSERIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoINSERIRActionPerformed
         // TODO add your handling code here:
-        modCaixaD.setData(String.valueOf(dataCaixa.getText()));
+        modCaixaD.setData_caixa(String.valueOf(dataCaixa.getText()));
         modCaixaD.setValor(Float.parseFloat(valorCaixa.getText()));
         caixadiarioDao.Salvar(modCaixaD);
         dataCaixa.setText("");
@@ -257,7 +267,7 @@ public class CaicaDiario extends javax.swing.JFrame {
         // TODO add your handling code here:
         modCaixaD.setPesquisa(pesquisaCaixa.getText());
         modeloCaixa_diario model = caixadiarioDao.buscaCaixa_diario(modCaixaD);
-        dataCaixa.setText(model.getData());
+        dataCaixa.setText(model.getData_caixa());
         valorCaixa.setText(String.valueOf(model.getValor()));
         botaoEDITAR.setEnabled(true);
         botaoEXCLUIR.setEnabled(true);
@@ -274,18 +284,28 @@ public class CaicaDiario extends javax.swing.JFrame {
         botaoEXCLUIR.setEnabled(true);
     }//GEN-LAST:event_tabelaCaixaMouseClicked
 
+    private void botaoEXCLUIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEXCLUIRActionPerformed
+        // TODO add your handling code here:
+        int resposta = 0;
+        resposta = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir?");
+        if(resposta == JOptionPane.YES_OPTION){
+            modCaixaD.setData_caixa(dataCaixa.getText());
+            caixadiarioDao.excluirCaixaDiario(modCaixaD);
+        }
+    }//GEN-LAST:event_botaoEXCLUIRActionPerformed
+
     /**
      * @param args the command line arguments
      */public void preencherTabela(String Sql){
         ArrayList dados = new ArrayList();
-        String[] colunas = new String[]{"valor","data"};
+        String[] colunas = new String[]{"valor","data_caixa"};
         connex.conexao();
         
         connex.executaSql(Sql);
          try {
             connex.rs.first();
             do {
-                dados.add(new Object[]{connex.rs.getFloat("valor"), connex.rs.getDate("data")});
+                dados.add(new Object[]{connex.rs.getFloat("valor"), connex.rs.getDate("data_caixa")});
             } while (connex.rs.next());
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(rootPane, "Busque outro produto na tabela" +ex);
@@ -351,7 +371,7 @@ public class CaicaDiario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private br.com.cyber.componente.KButton kButton1;
-    private javax.swing.JTextField pesquisaCaixa;
+    private br.com.cyber.componente.KTextField pesquiseCLIENTE;
     private br.com.cyber.componente.Ktable tabelaCaixa;
     private javax.swing.JTextField valorCaixa;
     // End of variables declaration//GEN-END:variables

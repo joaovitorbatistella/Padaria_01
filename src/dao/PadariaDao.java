@@ -7,6 +7,8 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modeloBeans.modelopadaria;
 import persistencia.ConexaoSQL;
@@ -39,6 +41,20 @@ public class PadariaDao {
            
         }
             connex.desconecta();
+    }
+    public void  excluirCliente (modelopadaria modPadaria){
+        connex.conexao();
+        
+        try {
+            PreparedStatement pst = connex.con.prepareStatement("delete from padaria where codigo = ?");
+            pst.setInt(1, modPadaria.getCodigo());
+            pst.execute();
+                    
+                    } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir dados " +ex);
+        }
+        
+        connex.desconecta();
     }
  public modelopadaria buscaPadaria (modelopadaria modPadaria){
     

@@ -26,7 +26,7 @@ public class compraDao {
         connex.conexao();
         
         try {
-            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO compra(data, valor_total, numero) VALUES (?, ?, ?)");
+            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO compra (data, valor_total, numero) VALUES (?, ?, ?)");
             pst.setDate(1, Date.valueOf(modCompra.getData()));
             pst.setFloat(2, modCompra.getValor_total());
             pst.setInt(3, modCompra.getNumero());
@@ -38,6 +38,19 @@ public class compraDao {
         connex.desconecta();
     }
 
+    public void excluirCompra (modeloCompra modCompra) {
+        connex.conexao();
+        
+        try {
+            PreparedStatement pst = connex.con.prepareStatement("delete from compra where numero =?");
+            pst.setInt(1, modCompra.getNumero());
+            pst.execute();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir dados" +ex);
+        }
+        
+        connex.desconecta();
+    }
     
     public modeloCompra buscaCompra (modeloCompra modCompra){
     

@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import modeloBeans.modeloPagamento;
+import modeloBeans.modeloVenda;
 
 /**
  *
@@ -20,16 +21,18 @@ public class pagamentoDao {
     
     ConexaoSQL connex = new ConexaoSQL();
     modeloPagamento modPagamento = new modeloPagamento();
+    modeloVenda modVenda = new modeloVenda();
     
     public void Salvar(modeloPagamento modPagamento) {
         
         connex.conexao();
         
         try {
-            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO pagamento(valor, data_pagamento, data_vencimento) VALUES (?, ?, ?)");
-            pst.setFloat(1, (modPagamento.getValor()));
-            pst.setDate(2, (Date.valueOf(modPagamento.getData_pagamento())));
-            pst.setDate(3, (Date.valueOf(modPagamento.getData_vencimento())));
+            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO pagamento(valor, data_pagamento, data_vencimento, cod_venda) VALUES (?, ?, ?, ?)");
+            pst.setFloat(1, Float.parseFloat(modPagamento.getValor()));
+            pst.setDate(2, Date.valueOf(modPagamento.getData_pagamento()));
+            pst.setDate(3, Date.valueOf(modPagamento.getData_vencimento()));
+            pst.setInt(4, modPagamento.getCod_venda());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso!");
         } catch (SQLException ex) {
@@ -46,7 +49,7 @@ public class pagamentoDao {
         connex.executaSql("SELECT * FROM pagamento WHERE cod_venda = '"+ modPagamento.getPesquisa()+"'");
         try{
             connex.rs.first();
-            modPagamento.setValor(connex.rs.getFloat("valor"));
+            modPagamento.setValor(connex.rs.getString("valor"));
             modPagamento.setData_pagamento(connex.rs.getString("data_pagamento"));
             modPagamento.setData_vencimento(connex.rs.getString("data_vencimento"));
             modPagamento.setCod_venda(connex.rs.getInt("cod_venda"));

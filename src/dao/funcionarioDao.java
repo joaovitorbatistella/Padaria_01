@@ -43,7 +43,7 @@ public class funcionarioDao {
     
         connex.conexao();
         
-        connex.executaSql("SELECT * FROM funcionario WHERE nome = '"+modFuncionario.getPesquisa()+"'");
+        connex.executaSql("SELECT * FROM funcionario WHERE nome like '%"+modFuncionario.getPesquisa()+"%'");
         try{
             connex.rs.first();
             modFuncionario.setTelefone(Long.parseLong(connex.rs.getString("telefone")));

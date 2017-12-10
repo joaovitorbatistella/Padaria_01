@@ -47,10 +47,6 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
@@ -84,10 +80,10 @@
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="pesquisarFUNCIONARIO" min="-2" pref="526" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="pesquiseCLIENTE" min="-2" pref="573" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="botaoBuscar" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
@@ -100,11 +96,15 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="botaoEXCLUIR" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jScrollPane1" alignment="0" min="-2" pref="693" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" alignment="0" min="-2" pref="691" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="88" pref="20" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -121,7 +121,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="botaoBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="pesquisarFUNCIONARIO" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="pesquiseCLIENTE" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                       </Group>
@@ -262,8 +262,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoINSERIRActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="pesquisarFUNCIONARIO">
-        </Component>
         <Component class="br.com.cyber.componente.KButton" name="botaoBuscar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -318,6 +316,9 @@
             <Property name="text" type="java.lang.String" value="CANCELAR"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoCANCELARActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botaoEDITAR">
           <Properties>
@@ -342,6 +343,11 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="2" name="C:\Users\joaov\Desktop\icone_prrincipal.png"/>
             </Property>
+          </Properties>
+        </Component>
+        <Component class="br.com.cyber.componente.KTextField" name="pesquiseCLIENTE">
+          <Properties>
+            <Property name="k_placeholder_text" type="java.lang.String" value="Pesquise funcion&#xe1;rio por nome"/>
           </Properties>
         </Component>
       </SubComponents>

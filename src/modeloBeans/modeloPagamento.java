@@ -14,14 +14,14 @@ public class modeloPagamento {
     /**
      * @return the valor
      */
-    public float getValor() {
+    public String getValor() {
         return valor;
     }
 
     /**
      * @param valor the valor to set
      */
-    public void setValor(float valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 
@@ -66,7 +66,7 @@ public class modeloPagamento {
     public void setCod_venda(int cod_venda) {
         this.cod_venda = cod_venda;
     }
-    private float valor;
+    private String valor;
     private String data_pagamento;
     private String data_vencimento;
     private int cod_venda;

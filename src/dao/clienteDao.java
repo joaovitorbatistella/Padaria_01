@@ -7,6 +7,8 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import persistencia.ConexaoSQL;
 import modeloBeans.modeloCliente;
@@ -41,6 +43,40 @@ public class clienteDao {
         }
             connex.desconecta();
     }
+    public void editarCliente (modeloCliente modCliente){
+        connex.conexao();
+        
+        try {
+            PreparedStatement pst = connex.con.prepareStatement("update cliente set nome=?, cpf=?, endereco=?, telefone=?, inadimplencia=? where codigo =?");
+            pst.setString(1, modCliente.getNome());// primeiro parâmetro indica a ? correspondente, segundo parâmetro a variável que substituirá a ?
+            pst.setLong(2, modCliente.getCpf()); //exemplo de hora
+            pst.setString(3, modCliente.getEndereco()); //exemplo de data
+            pst.setLong(4, modCliente.getTelefone()); //Exemplo de String
+            pst.setString(5, modCliente.getInadimplencia());
+            pst.setInt(6, modCliente.getCodigo());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Dados alterado com sucesso");
+                    
+                    } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na alteração dos dados/nError: " +ex);
+        }
+        
+        
+        connex.desconecta();
+    }
+    public void excluirCliente (modeloCliente modCliente) {
+        connex.conexao();
+        
+        try {
+            PreparedStatement pst = connex.con.prepareStatement("delete from cliente where codigo =?");
+            pst.setInt(1, modCliente.getCodigo());
+            pst.execute();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir dados" +ex);
+        }
+        
+        connex.desconecta();
+    }
  public modeloCliente buscaCliente (modeloCliente modCliente){
     
         connex.conexao();
@@ -56,7 +92,7 @@ public class clienteDao {
             modCliente.setCodigo(connex.rs.getInt("codigo"));
         }
         catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Cliente não cadastrado" + ex);
+            JOptionPane.showMessageDialog(null, "Cliente não cadastrado");
         }
         connex.desconecta();
         return modCliente;
