@@ -56,7 +56,7 @@ public class CaicaDiario extends javax.swing.JFrame {
         botaoEDITAR = new javax.swing.JButton();
         botaoEXCLUIR = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        pesquiseCLIENTE = new br.com.cyber.componente.KTextField();
+        pesquiseCAIXA = new br.com.cyber.componente.KTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -137,7 +137,7 @@ public class CaicaDiario extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Desktop\\icone_prrincipal.png")); // NOI18N
 
-        pesquiseCLIENTE.setK_placeholder_text("Pesquise por data");
+        pesquiseCAIXA.setK_placeholder_text("Pesquise por data");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -168,7 +168,7 @@ public class CaicaDiario extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(pesquiseCLIENTE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pesquiseCAIXA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -197,7 +197,7 @@ public class CaicaDiario extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pesquiseCLIENTE, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(pesquiseCAIXA, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
@@ -265,7 +265,7 @@ public class CaicaDiario extends javax.swing.JFrame {
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
         // TODO add your handling code here:
-        modCaixaD.setPesquisa(pesquisaCaixa.getText());
+        modCaixaD.setPesquisa(pesquiseCAIXA.getText());
         modeloCaixa_diario model = caixadiarioDao.buscaCaixa_diario(modCaixaD);
         dataCaixa.setText(model.getData_caixa());
         valorCaixa.setText(String.valueOf(model.getValor()));
@@ -371,7 +371,7 @@ public class CaicaDiario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private br.com.cyber.componente.KButton kButton1;
-    private br.com.cyber.componente.KTextField pesquiseCLIENTE;
+    private br.com.cyber.componente.KTextField pesquiseCAIXA;
     private br.com.cyber.componente.Ktable tabelaCaixa;
     private javax.swing.JTextField valorCaixa;
     // End of variables declaration//GEN-END:variables

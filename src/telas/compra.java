@@ -58,7 +58,7 @@ public class compra extends javax.swing.JFrame {
         tabelaCompra = new br.com.cyber.componente.Ktable();
         jLabel1 = new javax.swing.JLabel();
         numeroCOMPRA = new javax.swing.JTextField();
-        pesquiseCLIENTE = new br.com.cyber.componente.KTextField();
+        pesquiseCOMPRA = new br.com.cyber.componente.KTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -165,7 +165,7 @@ public class compra extends javax.swing.JFrame {
             }
         });
 
-        pesquiseCLIENTE.setK_placeholder_text("Pesquise compra por número");
+        pesquiseCOMPRA.setK_placeholder_text("Pesquise compra por número");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -194,7 +194,7 @@ public class compra extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(pesquiseCLIENTE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pesquiseCOMPRA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(11, 11, 11))
@@ -238,7 +238,7 @@ public class compra extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pesquiseCLIENTE, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pesquiseCOMPRA, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -304,7 +304,7 @@ public class compra extends javax.swing.JFrame {
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
         // TODO add your handling code here:
-        modCompra.setPesquisa(pesquisaCompra.getText());
+        modCompra.setPesquisa(pesquiseCOMPRA.getText());
         modeloCompra model = daoCompra.buscaCompra(modCompra);
         dataCompra.setText(model.getData());
         valor_totalCompra.setText(String.valueOf(model.getValor_total()));
@@ -424,7 +424,7 @@ public class compra extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private br.com.cyber.componente.KButton kButton1;
     private javax.swing.JTextField numeroCOMPRA;
-    private br.com.cyber.componente.KTextField pesquiseCLIENTE;
+    private br.com.cyber.componente.KTextField pesquiseCOMPRA;
     private br.com.cyber.componente.Ktable tabelaCompra;
     private javax.swing.JTextField valor_totalCompra;
     // End of variables declaration//GEN-END:variables

@@ -61,7 +61,7 @@ public class funcionario extends javax.swing.JFrame {
         botaoEDITAR = new javax.swing.JButton();
         botaoEXCLUIR = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        pesquiseCLIENTE = new br.com.cyber.componente.KTextField();
+        pesquiseFUNCIONARIO = new br.com.cyber.componente.KTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -158,7 +158,7 @@ public class funcionario extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Desktop\\icone_prrincipal.png")); // NOI18N
 
-        pesquiseCLIENTE.setK_placeholder_text("Pesquise funcionário por nome");
+        pesquiseFUNCIONARIO.setK_placeholder_text("Pesquise funcionário por nome");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -195,7 +195,7 @@ public class funcionario extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(pesquiseCLIENTE, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pesquiseFUNCIONARIO, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(botaoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -225,7 +225,7 @@ public class funcionario extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(botaoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pesquiseCLIENTE, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pesquiseFUNCIONARIO, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -300,7 +300,7 @@ public class funcionario extends javax.swing.JFrame {
 
     private void botaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarActionPerformed
         // TODO add your handling code here:
-        modFunc.setPesquisa(pesquisarFUNCIONARIO.getText());
+        modFunc.setPesquisa(pesquiseFUNCIONARIO.getText());
         modeloFuncionario model = daoFunc.buscaFuncionario(modFunc);
         telefoneFUNCIONARIO.setText(String.valueOf(model.getTelefone()));
         enderecoFUNCIONARIO.setText(String.valueOf(model.getEndereco()));
@@ -440,7 +440,7 @@ public class funcionario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nomeFUNCIONARIO;
-    private br.com.cyber.componente.KTextField pesquiseCLIENTE;
+    private br.com.cyber.componente.KTextField pesquiseFUNCIONARIO;
     private br.com.cyber.componente.Ktable tabelaFuncionario;
     private javax.swing.JTextField telefoneFUNCIONARIO;
     // End of variables declaration//GEN-END:variables

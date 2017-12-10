@@ -77,7 +77,7 @@
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="pesquiseCLIENTE" max="32767" attributes="0"/>
+                                  <Component id="pesquiseCAIXA" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="kButton1" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -117,7 +117,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="kButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="pesquiseCLIENTE" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="pesquiseCAIXA" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -294,7 +294,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="br.com.cyber.componente.KTextField" name="pesquiseCLIENTE">
+        <Component class="br.com.cyber.componente.KTextField" name="pesquiseCAIXA">
           <Properties>
             <Property name="k_placeholder_text" type="java.lang.String" value="Pesquise por data"/>
           </Properties>

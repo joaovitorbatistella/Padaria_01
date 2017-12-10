@@ -60,7 +60,7 @@ public class cadastropodruto extends javax.swing.JFrame {
         botaoCANCELAR = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         codigoProdutos = new javax.swing.JTextField();
-        pesquiseCLIENTE = new br.com.cyber.componente.KTextField();
+        pesquisePRODUTO = new br.com.cyber.componente.KTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -166,7 +166,7 @@ public class cadastropodruto extends javax.swing.JFrame {
 
         codigoProdutos.setEnabled(false);
 
-        pesquiseCLIENTE.setK_placeholder_text("Pesquise produtos por descricao");
+        pesquisePRODUTO.setK_placeholder_text("Pesquise produtos por descricao");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -207,7 +207,7 @@ public class cadastropodruto extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(pesquiseCLIENTE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pesquisePRODUTO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGap(18, 18, 18)
                             .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(44, 44, 44))
@@ -223,7 +223,7 @@ public class cadastropodruto extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pesquiseCLIENTE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pesquisePRODUTO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -314,7 +314,7 @@ public class cadastropodruto extends javax.swing.JFrame {
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
         // TODO add your handling code here:
-        modProduto.setPesquisa(pesquisaPRODUTO.getText());
+        modProduto.setPesquisa(pesquisePRODUTO.getText());
         modeloProduto model = daoProduto.buscaProduto(modProduto);
         descricaoProduto.setText(model.getDescricao());
         custoProduto.setText(String.valueOf(model.getCusto_producao()));
@@ -421,7 +421,7 @@ public class cadastropodruto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private br.com.cyber.componente.KButton kButton1;
-    private br.com.cyber.componente.KTextField pesquiseCLIENTE;
+    private br.com.cyber.componente.KTextField pesquisePRODUTO;
     private br.com.cyber.componente.Ktable tabelaPRODUTO;
     // End of variables declaration//GEN-END:variables
 }

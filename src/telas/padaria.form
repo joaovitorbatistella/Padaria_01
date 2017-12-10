@@ -59,12 +59,10 @@
                                       <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="telefonePADARIA" alignment="1" min="-2" pref="295" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="codigoPADARIA" min="-2" pref="136" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="telefonePADARIA" alignment="0" pref="295" max="32767" attributes="0"/>
+                                      <Component id="codigoPADARIA" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
+                                      <Component id="cnpjPADARIA" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -105,22 +103,15 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="pesquiseCLIENTE" max="32767" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="pesquiseCLIENTE" min="-2" pref="289" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="buscarPADARIA" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jScrollPane1" min="-2" pref="475" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
-                  </Group>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="206" max="-2" attributes="0"/>
-                      <Component id="pesquiseCLIENTE1" min="-2" pref="289" max="-2" attributes="0"/>
-                      <EmptySpace pref="471" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -147,8 +138,17 @@
                               <Component id="telefonePADARIA" min="-2" pref="38" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="22" max="32767" attributes="0"/>
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
+                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="cnpjPADARIA" max="32767" attributes="0"/>
+                                  <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="codigoPADARIA" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
@@ -164,7 +164,7 @@
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="buscarPADARIA" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="pesquiseCLIENTE" alignment="1" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="pesquiseCLIENTE" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="299" max="-2" attributes="0"/>
@@ -178,14 +178,7 @@
                           <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="21" max="32767" attributes="0"/>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="252" max="32767" attributes="0"/>
-                      <Component id="pesquiseCLIENTE1" min="-2" pref="34" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
-                  </Group>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -383,13 +376,12 @@
         </Component>
         <Component class="br.com.cyber.componente.KTextField" name="pesquiseCLIENTE">
           <Properties>
-            <Property name="doubleBuffered" type="boolean" value="true"/>
-            <Property name="k_placeholder_text" type="java.lang.String" value="Pesquise padaria por c&#xf3;digo"/>
+            <Property name="k_placeholder_text" type="java.lang.String" value="Pesquise funcion&#xe1;rio por nome"/>
           </Properties>
         </Component>
-        <Component class="br.com.cyber.componente.KTextField" name="pesquiseCLIENTE1">
+        <Component class="javax.swing.JTextField" name="cnpjPADARIA">
           <Properties>
-            <Property name="k_placeholder_text" type="java.lang.String" value="Pesquise funcion&#xe1;rio por nome"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
       </SubComponents>

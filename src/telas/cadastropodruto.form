@@ -87,7 +87,7 @@
                       </Group>
                       <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="pesquiseCLIENTE" max="32767" attributes="0"/>
+                              <Component id="pesquisePRODUTO" max="32767" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="kButton1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
@@ -109,7 +109,7 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="kButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="pesquiseCLIENTE" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="pesquisePRODUTO" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="298" max="-2" attributes="0"/>
@@ -303,7 +303,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="br.com.cyber.componente.KTextField" name="pesquiseCLIENTE">
+        <Component class="br.com.cyber.componente.KTextField" name="pesquisePRODUTO">
           <Properties>
             <Property name="k_placeholder_text" type="java.lang.String" value="Pesquise produtos por descricao"/>
           </Properties>

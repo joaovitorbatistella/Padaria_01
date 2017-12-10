@@ -82,7 +82,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="pesquiseCLIENTE" min="-2" pref="573" max="-2" attributes="0"/>
+                                  <Component id="pesquiseFUNCIONARIO" min="-2" pref="573" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="botaoBuscar" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -121,7 +121,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="botaoBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="pesquiseCLIENTE" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="pesquiseFUNCIONARIO" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                       </Group>
@@ -345,7 +345,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="br.com.cyber.componente.KTextField" name="pesquiseCLIENTE">
+        <Component class="br.com.cyber.componente.KTextField" name="pesquiseFUNCIONARIO">
           <Properties>
             <Property name="k_placeholder_text" type="java.lang.String" value="Pesquise funcion&#xe1;rio por nome"/>
           </Properties>
