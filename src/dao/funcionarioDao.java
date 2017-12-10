@@ -39,6 +39,39 @@ public class funcionarioDao {
        
         }
     }
+    public void editarCliente (modeloFuncionario modFuncionario){
+        connex.conexao();
+        
+        try {
+            PreparedStatement pst = connex.con.prepareStatement("update funcionario set telefone=?, endereco=?, nome=?, cpf=? where codigo =?");
+            pst.setLong(1, modFuncionario.getTelefone());// primeiro parâmetro indica a ? correspondente, segundo parâmetro a variável que substituirá a ?
+            pst.setString(2, modFuncionario.getEndereco()); //exemplo de hora
+            pst.setString(3, modFuncionario.getNome()); //exemplo de data
+            pst.setLong(4, modFuncionario.getCpf()); //Exemplo de String
+            pst.setInt(5, modFuncionario.getCodigo());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Dados alterado com sucesso");
+                    
+                    } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na alteração dos dados/nError: " +ex);
+        }
+        
+        
+        connex.desconecta();
+    }
+    public void excluirCliente (modeloFuncionario modFuncionario) {
+        connex.conexao();
+        
+        try {
+            PreparedStatement pst = connex.con.prepareStatement("delete from funcionario where codigo =?");
+            pst.setInt(1, modFuncionario.getCodigo());
+            pst.execute();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir dados" +ex);
+        }
+        
+        connex.desconecta();
+    }
  public modeloFuncionario buscaFuncionario (modeloFuncionario modFuncionario){
     
         connex.conexao();

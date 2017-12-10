@@ -56,6 +56,26 @@ public class PadariaDao {
         
         connex.desconecta();
     }
+    public void editarPadaria (modelopadaria modPadaria){
+        connex.conexao();
+        
+        try {
+            PreparedStatement pst = connex.con.prepareStatement("update padaria set email=?, endereco=?, telefone=?, cnpj=? where codigo =?");
+            pst.setString(1, modPadaria.getEmail());// primeiro parâmetro indica a ? correspondente, segundo parâmetro a variável que substituirá a ?
+            pst.setString(2, modPadaria.getEndereco());
+            pst.setLong(3, modPadaria.getTelefone());
+            pst.setLong(4, modPadaria.getCnpj());
+            pst.setInt(5, modPadaria.getCodigo());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Dados alterado com sucesso");
+                    
+                    } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na alteração dos dados/nError: " +ex);
+        }
+        
+        
+        connex.desconecta();
+    }
  public modelopadaria buscaPadaria (modelopadaria modPadaria){
     
         connex.conexao();

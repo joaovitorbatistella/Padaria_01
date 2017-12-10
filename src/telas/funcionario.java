@@ -21,6 +21,7 @@ public class funcionario extends javax.swing.JFrame {
     ConexaoSQL connex = new ConexaoSQL();
     funcionarioDao daoFunc = new funcionarioDao();
     modeloFuncionario modFunc = new modeloFuncionario();
+    int flag =0;
 
     /**
      * Creates new form funcionario
@@ -151,10 +152,20 @@ public class funcionario extends javax.swing.JFrame {
         botaoEDITAR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoEDITAR.setText("EDITAR");
         botaoEDITAR.setEnabled(false);
+        botaoEDITAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEDITARActionPerformed(evt);
+            }
+        });
 
         botaoEXCLUIR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoEXCLUIR.setText("EXCLUIR");
         botaoEXCLUIR.setEnabled(false);
+        botaoEXCLUIR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEXCLUIRActionPerformed(evt);
+            }
+        });
 
         jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Desktop\\icone_prrincipal.png")); // NOI18N
 
@@ -281,6 +292,7 @@ public class funcionario extends javax.swing.JFrame {
 
     private void botaoINSERIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoINSERIRActionPerformed
         // TODO add your handling code here:
+        if(flag==1){
         modFunc.setTelefone(Long.parseLong(telefoneFUNCIONARIO.getText()));
         modFunc.setEndereco(enderecoFUNCIONARIO.getText());
         modFunc.setNome(nomeFUNCIONARIO.getText());
@@ -296,6 +308,19 @@ public class funcionario extends javax.swing.JFrame {
         enderecoFUNCIONARIO.setEnabled(false);
         nomeFUNCIONARIO.setEnabled(false);
         cpfFUNCIONARIO.setEnabled(false);
+        }else{
+            modFunc.setCodigo(Integer.parseInt(codFUNCIONARIO.getText()));
+            modFunc.setTelefone(Long.parseLong(telefoneFUNCIONARIO.getText()));
+            modFunc.setCpf(Long.parseLong(cpfFUNCIONARIO.getText()));
+            modFunc.setEndereco(enderecoFUNCIONARIO.getText());
+            modFunc.setNome(nomeFUNCIONARIO.getText());
+            daoFunc.editarCliente(modFunc);
+            botaoINSERIR.setEnabled(false);
+            nomeFUNCIONARIO.setEnabled(false);
+            cpfFUNCIONARIO.setEnabled(false);
+            enderecoFUNCIONARIO.setEnabled(false);
+            telefoneFUNCIONARIO.setEnabled(false);
+        }
     }//GEN-LAST:event_botaoINSERIRActionPerformed
 
     private void botaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarActionPerformed
@@ -335,6 +360,9 @@ public class funcionario extends javax.swing.JFrame {
         nomeFUNCIONARIO.setText(tabelaFuncionario.getValueAt(indice, 1).toString());
         cpfFUNCIONARIO.setText(tabelaFuncionario.getValueAt(indice, 2).toString());
         codFUNCIONARIO.setText(tabelaFuncionario.getValueAt(indice, 0).toString());
+        botaoEDITAR.setEnabled(true);
+        botaoEXCLUIR.setEnabled(true);
+        botaoCANCELAR.setEnabled(true);
     }//GEN-LAST:event_tabelaFuncionarioMouseClicked
 
     private void botaoCANCELARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCANCELARActionPerformed
@@ -350,6 +378,26 @@ public class funcionario extends javax.swing.JFrame {
         cpfFUNCIONARIO.setText("");
         codFUNCIONARIO.setText("");
     }//GEN-LAST:event_botaoCANCELARActionPerformed
+
+    private void botaoEXCLUIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEXCLUIRActionPerformed
+        // TODO add your handling code here:
+        int resposta =0;
+        resposta = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir?");
+        if (resposta == JOptionPane.YES_OPTION){
+            modFunc.setCodigo(Integer.parseInt(codFUNCIONARIO.getText()));
+            daoFunc.excluirCliente(modFunc);
+        }
+    }//GEN-LAST:event_botaoEXCLUIRActionPerformed
+
+    private void botaoEDITARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEDITARActionPerformed
+        // TODO add your handling code here:
+        flag=2;
+        telefoneFUNCIONARIO.setEnabled(true);
+        cpfFUNCIONARIO.setEnabled(true);
+        nomeFUNCIONARIO.setEnabled(true);
+        enderecoFUNCIONARIO.setEnabled(true);
+        botaoINSERIR.setEnabled(true);
+    }//GEN-LAST:event_botaoEDITARActionPerformed
 
     /**
      * @param args the command line arguments

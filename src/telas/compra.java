@@ -268,6 +268,13 @@ public class compra extends javax.swing.JFrame {
 
     private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
         // TODO add your handling code here:
+        dataCompra.setText("");
+        numeroCOMPRA.setText("");
+        valor_totalCompra.setText("");
+        botaoInserir.setEnabled(false);
+        botaoEditar.setEnabled(false);
+        botaoExcluir.setEnabled(false);
+        
     }//GEN-LAST:event_botaoCancelarActionPerformed
 
     private void botaoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoActionPerformed
@@ -275,6 +282,7 @@ public class compra extends javax.swing.JFrame {
         dataCompra.setEnabled(true);
         valor_totalCompra.setEnabled(true);
         botaoInserir.setEnabled(true);
+        botaoCancelar.setEnabled(true);
         dataCompra.setText("");
         valor_totalCompra.setText("");
         numeroCOMPRA.setText("");

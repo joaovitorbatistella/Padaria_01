@@ -411,6 +411,8 @@ public class cliente extends javax.swing.JFrame {
         telefoneCliente.setText("");
         inadinplenciaCliente.setText("");
         botaoInserir.setEnabled(false);
+        botaoExcluir.setEnabled(false);
+        botaoEditar.setEnabled(false);
     }//GEN-LAST:event_botaoCancelarActionPerformed
 
     private void botaoEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEditarActionPerformed

@@ -36,6 +36,37 @@ public class produtoDao {
         connex.desconecta();
     }
 
+    public void editarProduto (modeloProduto modProduto){
+        connex.conexao();
+        
+        try {
+            PreparedStatement pst = connex.con.prepareStatement("update produto set descricao=?, custo_producao=? where codigo =?");
+            pst.setString(1, modProduto.getDescricao());// primeiro parâmetro indica a ? correspondente, segundo parâmetro a variável que substituirá a ?
+            pst.setFloat(2, modProduto.getCusto_producao());
+            pst.setInt(3, modProduto.getCodigo());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Dados alterado com sucesso");
+                    
+                    } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na alteração dos dados/nError: " +ex);
+        }
+        
+        
+        connex.desconecta();
+    }
+    public void excluirProdut (modeloProduto modCliente) {
+        connex.conexao();
+        
+        try {
+            PreparedStatement pst = connex.con.prepareStatement("delete from produto where codigo =?");
+            pst.setInt(1, modCliente.getCodigo());
+            pst.execute();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir dados" +ex);
+        }
+        
+        connex.desconecta();
+    }
     
     public modeloProduto buscaProduto (modeloProduto modProduto) {
     

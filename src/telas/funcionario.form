@@ -328,6 +328,9 @@
             <Property name="text" type="java.lang.String" value="EDITAR"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoEDITARActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botaoEXCLUIR">
           <Properties>
@@ -337,6 +340,9 @@
             <Property name="text" type="java.lang.String" value="EXCLUIR"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoEXCLUIRActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>

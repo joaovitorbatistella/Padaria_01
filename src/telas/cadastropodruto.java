@@ -25,6 +25,7 @@ public class cadastropodruto extends javax.swing.JFrame {
     ConexaoSQL connex = new ConexaoSQL();
     modeloProduto modProduto = new modeloProduto();
     produtoDao daoProduto = new produtoDao();
+    int flag=0;
     /**
      * Creates new form cadastropodruto
      */
@@ -269,6 +270,16 @@ public class cadastropodruto extends javax.swing.JFrame {
 
     private void botaoCANCELARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCANCELARActionPerformed
         // TODO add your handling code here:
+        descricaoProduto.setEnabled(false);
+        custoProduto.setEnabled(false);
+        botaoINSERIR.setEnabled(false);
+        botaoEDITAR.setEnabled(false);
+        botaoEXCLUIR.setEnabled(false);
+        botaoNOVO.setEnabled(true);
+        botaoCANCELAR.setEnabled(false);
+        descricaoProduto.setText("");
+        custoProduto.setText("");
+        codigoProdutos.setText("");
     }//GEN-LAST:event_botaoCANCELARActionPerformed
 
     private void custoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custoProdutoActionPerformed
@@ -288,20 +299,30 @@ public class cadastropodruto extends javax.swing.JFrame {
         codigoProdutos.setText("");
         botaoINSERIR.setEnabled(true);
         botaoCANCELAR.setEnabled(true);
-        botaoEDITAR.setEnabled(true);
-        botaoEXCLUIR.setEnabled(true);
     }//GEN-LAST:event_botaoNOVOActionPerformed
 
     private void botaoEXCLUIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEXCLUIRActionPerformed
         // TODO add your handling code here:
+        int resposta =0;
+        resposta = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir?");
+        if (resposta == JOptionPane.YES_OPTION){
+            modProduto.setCodigo(Integer.parseInt(codigoProdutos.getText()));
+            daoProduto.excluirProdut(modProduto);
+            
+        }
     }//GEN-LAST:event_botaoEXCLUIRActionPerformed
 
     private void botaoEDITARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEDITARActionPerformed
         // TODO add your handling code here:
+        flag=2;
+        descricaoProduto.setEnabled(true);
+        custoProduto.setEnabled(true);
+        botaoINSERIR.setEnabled(true);
     }//GEN-LAST:event_botaoEDITARActionPerformed
 
     private void botaoINSERIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoINSERIRActionPerformed
         // TODO add your handling code here:
+        if(flag==1){
         modProduto.setDescricao(descricaoProduto.getText());
         modProduto.setCusto_producao(Float.parseFloat(custoProduto.getText()));
         daoProduto.Salvar(modProduto);
@@ -310,6 +331,15 @@ public class cadastropodruto extends javax.swing.JFrame {
         descricaoProduto.setText("");
         custoProduto.setText("");
         codigoProdutos.setText("");
+        }else{
+            modProduto.setCodigo(Integer.parseInt(codigoProdutos.getText()));
+            modProduto.setDescricao(descricaoProduto.getText());
+            modProduto.setCusto_producao(Float.parseFloat(custoProduto.getText()));
+            daoProduto.editarProduto(modProduto);
+            botaoINSERIR.setEnabled(false);
+            descricaoProduto.setEnabled(false);
+            custoProduto.setEnabled(false);
+        }
     }//GEN-LAST:event_botaoINSERIRActionPerformed
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
@@ -335,7 +365,7 @@ public class cadastropodruto extends javax.swing.JFrame {
         custoProduto.setText(tabelaPRODUTO.getValueAt(indice, 1).toString());
         codigoProdutos.setText(tabelaPRODUTO.getValueAt(indice, 0).toString());
         
-        
+        botaoCANCELAR.setEnabled(true);
         botaoEDITAR.setEnabled(true);
         botaoEXCLUIR.setEnabled(true);
     }//GEN-LAST:event_tabelaPRODUTOMouseClicked

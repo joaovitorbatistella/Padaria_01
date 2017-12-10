@@ -22,6 +22,7 @@ public class CaicaDiario extends javax.swing.JFrame {
     ConexaoSQL connex = new ConexaoSQL();
     modeloCaixa_diario modCaixaD = new modeloCaixa_diario();
     caixa_diario caixadiarioDao = new caixa_diario();
+    int flag=0;
 
     /**
      * Creates new form NewJFrame
@@ -51,8 +52,8 @@ public class CaicaDiario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaCaixa = new br.com.cyber.componente.Ktable();
         botaoINSERIR = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        botaoNOVO = new javax.swing.JButton();
+        botaoCANCELAR = new javax.swing.JButton();
         botaoEDITAR = new javax.swing.JButton();
         botaoEXCLUIR = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -110,21 +111,31 @@ public class CaicaDiario extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton2.setText("NOVO");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botaoNOVO.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        botaoNOVO.setText("NOVO");
+        botaoNOVO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botaoNOVOActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton3.setText("CANCELAR");
-        jButton3.setEnabled(false);
+        botaoCANCELAR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        botaoCANCELAR.setText("CANCELAR");
+        botaoCANCELAR.setEnabled(false);
+        botaoCANCELAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCANCELARActionPerformed(evt);
+            }
+        });
 
         botaoEDITAR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoEDITAR.setText("EDITAR");
         botaoEDITAR.setEnabled(false);
+        botaoEDITAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEDITARActionPerformed(evt);
+            }
+        });
 
         botaoEXCLUIR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoEXCLUIR.setText("EXCLUIR");
@@ -181,9 +192,9 @@ public class CaicaDiario extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(botaoEXCLUIR, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(botaoNOVO, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3)))
+                                .addComponent(botaoCANCELAR)))
                         .addGap(32, 32, 32))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -220,8 +231,8 @@ public class CaicaDiario extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addComponent(jButton2))
+                            .addComponent(botaoCANCELAR)
+                            .addComponent(botaoNOVO))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(botaoEDITAR)
@@ -244,16 +255,18 @@ public class CaicaDiario extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botaoNOVOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNOVOActionPerformed
         // TODO add your handling code here:
         dataCaixa.setEnabled(true);
         valorCaixa.setEnabled(true);
-        botaoINSERIR.setEnabled(rootPaneCheckingEnabled);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        botaoINSERIR.setEnabled(true);
+        botaoCANCELAR.setEnabled(true);
+    }//GEN-LAST:event_botaoNOVOActionPerformed
 
     private void botaoINSERIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoINSERIRActionPerformed
         // TODO add your handling code here:
-        modCaixaD.setData_caixa(String.valueOf(dataCaixa.getText()));
+        if(flag==1){
+        modCaixaD.setData_caixa(dataCaixa.getText());
         modCaixaD.setValor(Float.parseFloat(valorCaixa.getText()));
         caixadiarioDao.Salvar(modCaixaD);
         dataCaixa.setText("");
@@ -261,6 +274,14 @@ public class CaicaDiario extends javax.swing.JFrame {
         botaoINSERIR.setEnabled(false);
         dataCaixa.setEnabled(false);
         valorCaixa.setEnabled(false);
+        }else{
+            modCaixaD.setData_caixa(dataCaixa.getText());
+            modCaixaD.setValor(Float.parseFloat(valorCaixa.getText()));
+            caixadiarioDao.editarCliente(modCaixaD);
+            botaoINSERIR.setEnabled(false);
+            dataCaixa.setEnabled(false);
+            valorCaixa.setEnabled(false);
+        }
     }//GEN-LAST:event_botaoINSERIRActionPerformed
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
@@ -290,9 +311,31 @@ public class CaicaDiario extends javax.swing.JFrame {
         resposta = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir?");
         if(resposta == JOptionPane.YES_OPTION){
             modCaixaD.setData_caixa(dataCaixa.getText());
-            caixadiarioDao.excluirCaixaDiario(modCaixaD);
+            caixadiarioDao.excluirCaixa(modCaixaD);
         }
     }//GEN-LAST:event_botaoEXCLUIRActionPerformed
+
+    private void botaoEDITARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEDITARActionPerformed
+        // TODO add your handling code here:
+        flag=2;
+        dataCaixa.setEnabled(true);
+        valorCaixa.setEnabled(true);
+        botaoINSERIR.setEnabled(true);
+    }//GEN-LAST:event_botaoEDITARActionPerformed
+
+    private void botaoCANCELARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCANCELARActionPerformed
+        // TODO add your handling code here:
+        dataCaixa.setEnabled(false);
+        valorCaixa.setEnabled(false);
+        botaoINSERIR.setEnabled(false);
+        botaoNOVO.setEnabled(true);
+        botaoCANCELAR.setEnabled(false);
+        botaoEDITAR.setEnabled(false);
+        botaoEXCLUIR.setEnabled(false);
+        dataCaixa.setText("");
+        valorCaixa.setText("");
+        
+    }//GEN-LAST:event_botaoCANCELARActionPerformed
 
     /**
      * @param args the command line arguments
@@ -358,12 +401,12 @@ public class CaicaDiario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoCANCELAR;
     private javax.swing.JButton botaoEDITAR;
     private javax.swing.JButton botaoEXCLUIR;
     private javax.swing.JButton botaoINSERIR;
+    private javax.swing.JButton botaoNOVO;
     private javax.swing.JTextField dataCaixa;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
