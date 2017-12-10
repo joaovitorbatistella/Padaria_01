@@ -162,7 +162,6 @@ public class pagamento extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tabelaPagamento.setEnabled(false);
         tabelaPagamento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabelaPagamentoMouseClicked(evt);
@@ -385,6 +384,7 @@ public class pagamento extends javax.swing.JFrame {
         codVENDAPAGAMENTO.setEnabled(true);
         valorPAGAMENTO.setEnabled(true);
         botaoInserir.setEnabled(true);
+        tabelaVENDAPAGAMENTO.setEnabled(true);
     }//GEN-LAST:event_botaoEditarActionPerformed
 
     private void botaoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoActionPerformed

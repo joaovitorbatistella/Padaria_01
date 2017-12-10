@@ -64,7 +64,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="botaoeditar" min="-2" pref="111" max="-2" attributes="0"/>
+                                  <Component id="botaoEDITAR" min="-2" pref="111" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="botaoEXCLUIR" min="-2" pref="111" max="-2" attributes="0"/>
                               </Group>
@@ -168,7 +168,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="botaoEXCLUIR" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="botaoeditar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="botaoEDITAR" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -285,13 +285,13 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoCancelar2ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="br.com.cyber.componente.KButton" name="botaoeditar">
+        <Component class="br.com.cyber.componente.KButton" name="botaoEDITAR">
           <Properties>
             <Property name="text" type="java.lang.String" value="Editar"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoeditarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoEDITARActionPerformed"/>
           </Events>
         </Component>
         <Component class="br.com.cyber.componente.KButton" name="botaoEXCLUIR">

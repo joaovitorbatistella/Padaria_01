@@ -57,7 +57,7 @@ public class venda extends javax.swing.JFrame {
         kButton1 = new br.com.cyber.componente.KButton();
         botaoNovo = new br.com.cyber.componente.KButton();
         botaoCancelar2 = new br.com.cyber.componente.KButton();
-        botaoeditar = new br.com.cyber.componente.KButton();
+        botaoEDITAR = new br.com.cyber.componente.KButton();
         botaoEXCLUIR = new br.com.cyber.componente.KButton();
         botaoInserir1 = new br.com.cyber.componente.KButton();
         jLabel5 = new javax.swing.JLabel();
@@ -142,11 +142,11 @@ public class venda extends javax.swing.JFrame {
             }
         });
 
-        botaoeditar.setText("Editar");
-        botaoeditar.setEnabled(false);
-        botaoeditar.addActionListener(new java.awt.event.ActionListener() {
+        botaoEDITAR.setText("Editar");
+        botaoEDITAR.setEnabled(false);
+        botaoEDITAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoeditarActionPerformed(evt);
+                botaoEDITARActionPerformed(evt);
             }
         });
 
@@ -215,7 +215,7 @@ public class venda extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(botaoeditar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(botaoEDITAR, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(botaoEXCLUIR, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -296,7 +296,7 @@ public class venda extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(botaoEXCLUIR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botaoeditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(botaoEDITAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -310,8 +310,6 @@ public class venda extends javax.swing.JFrame {
 
     private void botaoInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInserirActionPerformed
         // TODO add your handling code here:
-    
-
     }//GEN-LAST:event_botaoInserirActionPerformed
 
     private void tabelaCLIENTEVENDAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaCLIENTEVENDAMouseClicked
@@ -319,7 +317,7 @@ public class venda extends javax.swing.JFrame {
         int indice = tabelaCLIENTEVENDA.getSelectedRow();
         codclienteVENDA.setText(tabelaCLIENTEVENDA.getValueAt(indice, 5).toString());
 
-        botaoeditar.setEnabled(true);
+        botaoEDITAR.setEnabled(true);
         botaoEXCLUIR.setEnabled(true);
     }//GEN-LAST:event_tabelaCLIENTEVENDAMouseClicked
 
@@ -334,7 +332,7 @@ public class venda extends javax.swing.JFrame {
         valorVENDA.setText("");
         numeroVENDA.setText("");
         codclienteVENDA.setText("");
-        botaoInserir.setEnabled(false);
+        botaoInserir1.setEnabled(false);
         dataVENDA.setEnabled(false);
         valorVENDA.setEnabled(false);
         numeroVENDA.setEnabled(false);
@@ -344,7 +342,7 @@ public class venda extends javax.swing.JFrame {
             modVenda.setValor_total(valorVENDA.getText());
             modVenda.setCod_cliente(Integer.parseInt(codclienteVENDA.getText()));
             daoVenda.editarVenda(modVenda);
-            botaoInserir.setEnabled(false);
+            botaoInserir1.setEnabled(false);
             dataVENDA.setEnabled(false);
             valorVENDA.setEnabled(false);
             codclienteVENDA.setEnabled(false);
@@ -363,7 +361,7 @@ public class venda extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botaoEXCLUIRActionPerformed
 
-    private void botaoeditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoeditarActionPerformed
+    private void botaoEDITARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEDITARActionPerformed
         // TODO add your handling code here:
         flag=2;
         tabelaCLIENTEVENDA.setEnabled(true);
@@ -372,7 +370,7 @@ public class venda extends javax.swing.JFrame {
         valorVENDA.setEnabled(true);
         codclienteVENDA.setEnabled(true);
         botaoInserir1.setEnabled(true);
-    }//GEN-LAST:event_botaoeditarActionPerformed
+    }//GEN-LAST:event_botaoEDITARActionPerformed
 
     private void botaoCancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelar2ActionPerformed
         // TODO add your handling code here:
@@ -380,7 +378,6 @@ public class venda extends javax.swing.JFrame {
 
     private void botaoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoActionPerformed
         // TODO add your handling code here:
-
         botaoInserir1.setEnabled(true);
         dataVENDA.setEnabled(true);
         valorVENDA.setEnabled(true);
@@ -400,7 +397,7 @@ public class venda extends javax.swing.JFrame {
         valorVENDA.setText(tabelaVENDA.getValueAt(indice, 2).toString());
         numeroVENDA.setText(tabelaVENDA.getValueAt(indice, 0).toString());
 
-        botaoeditar.setEnabled(true);
+        botaoEDITAR.setEnabled(true);
         botaoEXCLUIR.setEnabled(true);
     }//GEN-LAST:event_tabelaVENDAMouseClicked
 
@@ -508,11 +505,11 @@ public class venda extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private br.com.cyber.componente.KButton botaoCancelar2;
+    private br.com.cyber.componente.KButton botaoEDITAR;
     private br.com.cyber.componente.KButton botaoEXCLUIR;
     private br.com.cyber.componente.KButton botaoInserir;
     private br.com.cyber.componente.KButton botaoInserir1;
     private br.com.cyber.componente.KButton botaoNovo;
-    private br.com.cyber.componente.KButton botaoeditar;
     private javax.swing.JTextField codclienteVENDA;
     private javax.swing.JTextField dataVENDA;
     private javax.swing.JLabel jLabel1;
