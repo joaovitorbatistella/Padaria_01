@@ -22,6 +22,7 @@ public class usuario extends javax.swing.JFrame {
     modeloUsuarios modUsu = new modeloUsuarios();
     ConexaoSQL connex = new ConexaoSQL();
     usuarios daoUsu = new usuarios();
+    int flag=0;
 
     /**
      * Creates new form usuario
@@ -129,10 +130,20 @@ public class usuario extends javax.swing.JFrame {
         botaoEDITAR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoEDITAR.setText("EDITAR");
         botaoEDITAR.setEnabled(false);
+        botaoEDITAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEDITARActionPerformed(evt);
+            }
+        });
 
         botaoEXCLUIR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoEXCLUIR.setText("EXCLUIR");
         botaoEXCLUIR.setEnabled(false);
+        botaoEXCLUIR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEXCLUIRActionPerformed(evt);
+            }
+        });
 
         botaoCANCELAR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botaoCANCELAR.setText("CANCELAR");
@@ -260,6 +271,7 @@ public class usuario extends javax.swing.JFrame {
 
     private void botaoINSERIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoINSERIRActionPerformed
         // TODO add your handling code here:
+        if(flag!=2){
         modUsu.setUsu_nome(String.valueOf(nomeUSUARIO.getText()));
         modUsu.setUsu_senha(String.valueOf(senhaUSUARIO.getText()));
         daoUsu.Salvar(modUsu);
@@ -268,6 +280,15 @@ public class usuario extends javax.swing.JFrame {
         botaoINSERIR.setEnabled(false);
         nomeUSUARIO.setEnabled(false);
         senhaUSUARIO.setEnabled(false);
+        }else if (flag==2){
+            modUsu.setUsu_nome(nomeUSUARIO.getText());
+            modUsu.setUsu_senha(senhaUSUARIO.getText());
+            modUsu.setUsu_cod(Integer.parseInt(codigoUSUARIOS.getText()));
+            daoUsu.editarUsuario(modUsu);
+            botaoINSERIR.setEnabled(false);
+            nomeUSUARIO.setEnabled(false);
+            senhaUSUARIO.setEnabled(false);
+        }
     }//GEN-LAST:event_botaoINSERIRActionPerformed
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
@@ -300,6 +321,24 @@ public class usuario extends javax.swing.JFrame {
     private void pesquisarUSUARIOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarUSUARIOActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pesquisarUSUARIOActionPerformed
+
+    private void botaoEXCLUIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEXCLUIRActionPerformed
+        // TODO add your handling code here:
+        int resposta = 0;
+        resposta = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir?");
+        if(resposta == JOptionPane.YES_OPTION){
+            modUsu.setUsu_cod(Integer.parseInt(codigoUSUARIOS.getText()));
+            daoUsu.excluirCliente(modUsu);
+        }
+    }//GEN-LAST:event_botaoEXCLUIRActionPerformed
+
+    private void botaoEDITARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEDITARActionPerformed
+        // TODO add your handling code here:
+        flag=2;
+        nomeUSUARIO.setEnabled(true);
+        senhaUSUARIO.setEnabled(true);
+        botaoINSERIR.setEnabled(true);
+    }//GEN-LAST:event_botaoEDITARActionPerformed
 
     /**
      * @param args

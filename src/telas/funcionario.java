@@ -292,7 +292,7 @@ public class funcionario extends javax.swing.JFrame {
 
     private void botaoINSERIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoINSERIRActionPerformed
         // TODO add your handling code here:
-        if(flag==1){
+        if(flag!=2){
         modFunc.setTelefone(Long.parseLong(telefoneFUNCIONARIO.getText()));
         modFunc.setEndereco(enderecoFUNCIONARIO.getText());
         modFunc.setNome(nomeFUNCIONARIO.getText());
@@ -308,7 +308,7 @@ public class funcionario extends javax.swing.JFrame {
         enderecoFUNCIONARIO.setEnabled(false);
         nomeFUNCIONARIO.setEnabled(false);
         cpfFUNCIONARIO.setEnabled(false);
-        }else{
+        }else if(flag == 2){
             modFunc.setCodigo(Integer.parseInt(codFUNCIONARIO.getText()));
             modFunc.setTelefone(Long.parseLong(telefoneFUNCIONARIO.getText()));
             modFunc.setCpf(Long.parseLong(cpfFUNCIONARIO.getText()));

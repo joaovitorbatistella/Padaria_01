@@ -88,7 +88,7 @@ public class pagamentoDao {
             modPagamento.setCod_venda(connex.rs.getInt("cod_venda"));
         }
         catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Produto não cadastrado" +ex);
+            JOptionPane.showMessageDialog(null, "Pagamento não cadastrado" +ex);
         }
         connex.desconecta();
         return modPagamento;

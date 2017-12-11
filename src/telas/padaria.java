@@ -301,7 +301,7 @@ public class padaria extends javax.swing.JFrame {
 
     private void botaoINSERIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoINSERIRActionPerformed
         // TODO add your handling code here:
-        if(flag==1){
+        if(flag!=2){
         modPadaria.setEmail(emailPADARIA.getText());
         modPadaria.setEndereco(enderecoPADARIA.getText());
         modPadaria.setTelefone(Long.parseLong(telefonePADARIA.getText()));
@@ -317,7 +317,7 @@ public class padaria extends javax.swing.JFrame {
         telefonePADARIA.setEnabled(false);
         cnpjPADARIA.setEnabled(false);
         preencherTabela("select * from padaria order by codigo");
-        }else{
+        }else if (flag==2){
             modPadaria.setEmail(emailPADARIA.getText());
             modPadaria.setEndereco(enderecoPADARIA.getText());
             modPadaria.setTelefone(Long.parseLong(telefonePADARIA.getText()));

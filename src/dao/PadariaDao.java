@@ -90,7 +90,7 @@ public class PadariaDao {
             modPadaria.setCodigo(connex.rs.getInt("codigo"));
         }
         catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Cliente não cadastrado" +ex);
+            JOptionPane.showMessageDialog(null, "Padaria não cadastrada" +ex);
         }
         connex.desconecta();
         return modPadaria;

@@ -80,7 +80,7 @@ public class compraDao {
             modCompra.setNumero(connex.rs.getInt("numero"));
         }
         catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Produto não cadastrado");
+            JOptionPane.showMessageDialog(null, "Compra não cadastrada");
         }
         connex.desconecta();
         return modCompra;

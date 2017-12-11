@@ -322,7 +322,7 @@ public class cadastropodruto extends javax.swing.JFrame {
 
     private void botaoINSERIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoINSERIRActionPerformed
         // TODO add your handling code here:
-        if(flag==1){
+        if(flag!=2){
         modProduto.setDescricao(descricaoProduto.getText());
         modProduto.setCusto_producao(Float.parseFloat(custoProduto.getText()));
         daoProduto.Salvar(modProduto);
@@ -331,7 +331,7 @@ public class cadastropodruto extends javax.swing.JFrame {
         descricaoProduto.setText("");
         custoProduto.setText("");
         codigoProdutos.setText("");
-        }else{
+        }else if (flag==2){
             modProduto.setCodigo(Integer.parseInt(codigoProdutos.getText()));
             modProduto.setDescricao(descricaoProduto.getText());
             modProduto.setCusto_producao(Float.parseFloat(custoProduto.getText()));

@@ -298,13 +298,13 @@ public class venda extends javax.swing.JFrame {
                             .addComponent(botaoEXCLUIR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botaoEDITAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 1050, 550);
+        jPanel1.setBounds(0, 0, 1050, 540);
 
-        setSize(new java.awt.Dimension(1063, 598));
+        setSize(new java.awt.Dimension(1059, 577));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -323,10 +323,11 @@ public class venda extends javax.swing.JFrame {
 
     private void botaoInserir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInserir1ActionPerformed
         // TODO add your handling code here:
-        if(flag==1){
+        if(flag != 2){
         modVenda.setData(dataVENDA.getText());
         modVenda.setValor_total(String.valueOf(valorVENDA.getText()));
         modVenda.setCod_cliente(Integer.parseInt(codclienteVENDA.getText()));
+        modVenda.setNumero(Integer.parseInt(numeroVENDA.getText()));
         daoVenda.Salvar(modVenda);
         dataVENDA.setText("");
         valorVENDA.setText("");
@@ -337,10 +338,11 @@ public class venda extends javax.swing.JFrame {
         valorVENDA.setEnabled(false);
         numeroVENDA.setEnabled(false);
         codclienteVENDA.setEnabled(false);
-        }else{
+        }else if (flag ==2){
             modVenda.setData(dataVENDA.getText());
             modVenda.setValor_total(valorVENDA.getText());
             modVenda.setCod_cliente(Integer.parseInt(codclienteVENDA.getText()));
+            modVenda.setNumero(Integer.parseInt(numeroVENDA.getText()));
             daoVenda.editarVenda(modVenda);
             botaoInserir1.setEnabled(false);
             dataVENDA.setEnabled(false);
@@ -381,6 +383,7 @@ public class venda extends javax.swing.JFrame {
         botaoInserir1.setEnabled(true);
         dataVENDA.setEnabled(true);
         valorVENDA.setEnabled(true);
+        numeroVENDA.setEnabled(true);
         codclienteVENDA.setEnabled(true);
         tabelaCLIENTEVENDA.setEnabled(true);
         tabelaVENDA.setEnabled(true);

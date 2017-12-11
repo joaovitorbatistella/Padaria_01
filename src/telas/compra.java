@@ -153,6 +153,9 @@ public class compra extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabelaCompraMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tabelaCompraMouseEntered(evt);
+            }
         });
         jScrollPane1.setViewportView(tabelaCompra);
 
@@ -304,7 +307,7 @@ public class compra extends javax.swing.JFrame {
 
     private void botaoInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInserirActionPerformed
         // TODO add your handling code here:
-        if(flag == 1){
+        if(flag != 2){
         modCompra.setData(dataCompra.getText());
         modCompra.setValor_total(Float.parseFloat(valor_totalCompra.getText()));
         daoCompra.Salvar(modCompra);
@@ -314,9 +317,10 @@ public class compra extends javax.swing.JFrame {
         botaoInserir.setEnabled(false);
         dataCompra.setEnabled(false);
         valor_totalCompra.setEnabled(false);
-        }else{
+        }else if(flag ==2){
             modCompra.setData(dataCompra.getText());
             modCompra.setValor_total(Float.parseFloat(valor_totalCompra.getText()));
+            modCompra.setNumero(Integer.parseInt(numeroCOMPRA.getText()));
             daoCompra.editarCliente(modCompra);
             botaoInserir.setEnabled(false);
             dataCompra.setEnabled(false);
@@ -365,6 +369,10 @@ public class compra extends javax.swing.JFrame {
         }
            
     }//GEN-LAST:event_botaoExcluirActionPerformed
+
+    private void tabelaCompraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaCompraMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabelaCompraMouseEntered
 
     /**
      * @param args the command line arguments

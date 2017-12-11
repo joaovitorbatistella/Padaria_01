@@ -27,10 +27,11 @@ public class vendaDao {
         connex.conexao();
         
         try {
-            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO venda(data, valor_total, cod_cliente) VALUES (?, ?, ?)");
+            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO venda(data, valor_total, cod_cliente, numero) VALUES (?, ?, ?, ?)");
             pst.setDate(1, Date.valueOf(modVenda.getData()));
             pst.setFloat(2, Float.parseFloat((modVenda.getValor_total())));
             pst.setInt(3, modVenda.getCod_cliente());
+            pst.setInt(4, modVenda.getNumero());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso!");
         } catch (SQLException ex) {
@@ -59,7 +60,7 @@ public class vendaDao {
         try {
             PreparedStatement pst = connex.con.prepareStatement("update venda set data=?, valor_total=?, cod_cliente=? where numero=?");
             pst.setDate(1, Date.valueOf(modVenda.getData()));
-            pst.setFloat(2, Float.parseFloat((modVenda.getValor_total())));
+            pst.setFloat(2, Float.parseFloat(modVenda.getValor_total()));
             pst.setInt(3, modVenda.getCod_cliente());
             pst.setInt(4, modVenda.getNumero());
             pst.execute();

@@ -86,7 +86,7 @@ public class funcionarioDao {
             modFuncionario.setCodigo(Integer.parseInt(connex.rs.getString("codigo")));
         }
         catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Cliente não cadastrado" + ex);
+            JOptionPane.showMessageDialog(null, "Funcionário não cadastrado" + ex);
         }
         connex.desconecta();
         return modFuncionario;

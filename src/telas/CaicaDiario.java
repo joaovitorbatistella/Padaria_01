@@ -265,7 +265,7 @@ public class CaicaDiario extends javax.swing.JFrame {
 
     private void botaoINSERIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoINSERIRActionPerformed
         // TODO add your handling code here:
-        if(flag==1){
+        if(flag!=2){
         modCaixaD.setData_caixa(dataCaixa.getText());
         modCaixaD.setValor(Float.parseFloat(valorCaixa.getText()));
         caixadiarioDao.Salvar(modCaixaD);
@@ -274,7 +274,7 @@ public class CaicaDiario extends javax.swing.JFrame {
         botaoINSERIR.setEnabled(false);
         dataCaixa.setEnabled(false);
         valorCaixa.setEnabled(false);
-        }else{
+        }else if (flag==2){
             modCaixaD.setData_caixa(dataCaixa.getText());
             modCaixaD.setValor(Float.parseFloat(valorCaixa.getText()));
             caixadiarioDao.editarCliente(modCaixaD);
