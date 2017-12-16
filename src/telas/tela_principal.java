@@ -54,7 +54,7 @@ public class tela_principal extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         func3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        func3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/shoppaymentorderbuy-29_icon-icons.com_73875.png"))); // NOI18N
+        func3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/shoppaymentorderbuy-29_icon-icons.com_73875_1.png"))); // NOI18N
         func3.setToolTipText("Venda");
         func3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +76,7 @@ public class tela_principal extends javax.swing.JFrame {
         func2.setBounds(1010, 240, 140, 120);
 
         func1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        func1.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Desktop\\shoppingcart_compra_13339.png")); // NOI18N
+        func1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/shoppingcart_compra_13339.png"))); // NOI18N
         func1.setToolTipText("Compra");
         func1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +91,7 @@ public class tela_principal extends javax.swing.JFrame {
         jLabel3.setBounds(510, 150, 250, 300);
 
         func.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        func.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Downloads\\icons8-Funcionário homem-80.png")); // NOI18N
+        func.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-Funcionário homem-80.png"))); // NOI18N
         func.setToolTipText("Funcionários");
         func.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +102,7 @@ public class tela_principal extends javax.swing.JFrame {
         func.setBounds(50, 60, 140, 120);
 
         clientes.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        clientes.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Downloads\\icons8-Empresa Cliente-128.png")); // NOI18N
+        clientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-Empresa Cliente-128.png"))); // NOI18N
         clientes.setToolTipText("Clientes");
         clientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +124,7 @@ public class tela_principal extends javax.swing.JFrame {
         func6.setBounds(910, 440, 140, 120);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Downloads\\icons8-Mover por carrinho-100.png")); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-Mover por carrinho-100.png"))); // NOI18N
         jButton2.setToolTipText("Produtos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,7 +139,7 @@ public class tela_principal extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(450, 60, 400, 92);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\joaov\\Desktop\\Sem Título-1.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Sem Título-1.png"))); // NOI18N
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 1280, 700);
 

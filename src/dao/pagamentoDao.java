@@ -28,11 +28,12 @@ public class pagamentoDao {
         connex.conexao();
         
         try {
-            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO pagamento(valor, data_pagamento, data_vencimento, cod_venda) VALUES (?, ?, ?, ?)");
+            PreparedStatement pst = connex.con.prepareStatement("INSERT INTO pagamento(valor, data_pagamento, data_vencimento, cod_venda, cod_pagamento) VALUES (?, ?, ?, ?, ?)");
             pst.setFloat(1, modPagamento.getValor());
             pst.setDate(2, Date.valueOf(modPagamento.getData_pagamento()));
             pst.setDate(3, Date.valueOf(modPagamento.getData_vencimento()));
             pst.setInt(4, modPagamento.getCod_venda());
+            pst.setInt(5, modPagamento.getCod_pagamento());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso!");
         } catch (SQLException ex) {

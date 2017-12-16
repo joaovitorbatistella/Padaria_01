@@ -126,6 +126,11 @@ public class venda extends javax.swing.JFrame {
 
         kButton1.setBackground(new java.awt.Color(0, 255, 0));
         kButton1.setText("BUSCAR");
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton1ActionPerformed(evt);
+            }
+        });
 
         botaoNovo.setText("Novo");
         botaoNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -403,6 +408,10 @@ public class venda extends javax.swing.JFrame {
         botaoEDITAR.setEnabled(true);
         botaoEXCLUIR.setEnabled(true);
     }//GEN-LAST:event_tabelaVENDAMouseClicked
+
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kButton1ActionPerformed
 
     /**
      * @param args the command line arguments

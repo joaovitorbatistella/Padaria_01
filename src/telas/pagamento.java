@@ -346,6 +346,7 @@ public class pagamento extends javax.swing.JFrame {
         modPagamento.setData_pagamento(dataPagamento.getText());
         modPagamento.setData_vencimento(dataVencimento.getText());
         modPagamento.setValor(Float.parseFloat(valorPAGAMENTO.getText()));
+        modPagamento.setCod_pagamento(Integer.parseInt(codPAGAMENTo.getText()));
         modPagamento.setCod_venda(Integer.parseInt(codVENDAPAGAMENTO.getText()));
         daoPagamento.Salvar(modPagamento);
         dataPagamento.setText("");
@@ -353,6 +354,8 @@ public class pagamento extends javax.swing.JFrame {
         valorPAGAMENTO.setText("");
         codPAGAMENTo.setText("");
         codVENDAPAGAMENTO.setText("");
+        codPAGAMENTo.setEnabled(false);
+        codVENDAPAGAMENTO.setEnabled(false);
         botaoInserir.setEnabled(false);
         dataPagamento.setEnabled(false);
         dataVencimento.setEnabled(false);
@@ -395,6 +398,7 @@ public class pagamento extends javax.swing.JFrame {
         dataVencimento.setEnabled(true);
         valorPAGAMENTO.setEnabled(true);
         codVENDAPAGAMENTO.setEnabled(true);
+        codPAGAMENTo.setEnabled(true);
         tabelaPagamento.setEnabled(true);
         tabelaVENDAPAGAMENTO.setEnabled(true);
         botaoInserir.setEnabled(true);
